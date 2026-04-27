@@ -5,41 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PKB | SEKAR YGI</title>
     <style>
-        /* CSS tetap konsisten */
+        /* CSS Global - Konsisten dengan Beranda */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
+
         .top-bar { background-color: #002244; color: #fff; padding: 8px 10%; display: flex; justify-content: space-between; font-size: 0.8rem; }
+
         header { background-color: #fff; padding: 25px 10%; display: flex; align-items: center; border-bottom: 5px solid #cc0000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo-container { display: flex; align-items: center; }
         .logo-img { height: 100px; width: auto; margin-right: 30px; }
         .logo-text h1 { font-size: 2.8rem; color: #003366; line-height: 1; letter-spacing: 2px; margin-bottom: 8px; font-weight: 800; }
         .logo-text p { font-size: 1.1rem; color: #444; font-weight: 500; border-top: 2px solid #cc0000; padding-top: 5px; text-transform: uppercase; }
+
         nav { background-color: #003366; padding: 0 10%; position: sticky; top: 0; z-index: 1000; }
         nav ul { list-style: none; display: flex; }
         nav ul li a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
         nav ul li a:hover { background-color: #cc0000; }
-        
-        /* Layout Konten */
+
+        /* Container PKB */
         .container { padding: 50px 10%; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
         .main-content { background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .sidebar { background: #fff; padding: 25px; border-radius: 8px; border-top: 6px solid #003366; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: fit-content; }
         
         h2 { color: #003366; margin-bottom: 20px; font-size: 2rem; border-left: 5px solid #cc0000; padding-left: 15px; }
+        
         .status-box { background-color: #fff3f3; border: 1px solid #ffcccc; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-        .status-box h4 { color: #cc0000; margin-bottom: 10px; display: flex; align-items: center; }
+        .status-box h4 { color: #cc0000; margin-bottom: 10px; }
         
         .pkb-point { margin-top: 20px; padding: 15px; border-bottom: 1px solid #eee; }
         .pkb-point strong { color: #003366; display: block; margin-bottom: 5px; }
 
+        /* Sidebar */
+        .sidebar-news-box { background: #fff; padding: 20px; border-radius: 8px; border-left: 6px solid #cc0000; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .sidebar-news-box h3 { color: #cc0000; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; }
+        .news-thumb { width: 100%; border-radius: 4px; margin-bottom: 10px; border: 1px solid #ddd; }
+        .news-link { color: #003366; text-decoration: none; font-weight: bold; font-size: 0.95rem; display: block; margin-top: 5px; }
+
+        .sidebar-links { background: #fff; padding: 25px; border-radius: 8px; border-top: 6px solid #003366; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
         footer { background-color: #001a33; color: #bdc3c7; padding: 50px 10% 20px 10%; margin-top: 60px; }
         .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid #34495e; font-size: 0.85rem; }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .top-bar { flex-direction: column; text-align: center; gap: 5px; }
+            header { flex-direction: column; text-align: center; padding: 20px 5%; }
+            .logo-img { margin-right: 0; margin-bottom: 15px; height: 70px; }
+            .logo-text h1 { font-size: 1.8rem; }
+            nav ul { flex-direction: column; }
+            nav ul li a { text-align: center; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .container { grid-template-columns: 1fr; padding: 20px 5%; }
+        }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <div>Informasi PKB Terkini</div>
-        <div>Tahun Periode: 2024 - 2026</div>
+        <div>Perjanjian Kerja Bersama (PKB) SEKAR YGI</div>
+        <div>Update: April 2026</div>
     </div>
 
     <header>
@@ -65,36 +87,46 @@
 
     <div class="container">
         <main class="main-content">
-            <h2>Perjanjian Kerja Bersama (PKB)</h2>
-            <p>PKB merupakan landasan utama hubungan kerja antara Manajemen PT Yudhistira Ghalia Indonesia dan Serikat Karyawan. Dokumen ini mengatur hak, kewajiban, dan syarat-syarat kerja demi kesejahteraan bersama.</p>
+            <h2>Perjanjian Kerja Bersama</h2>
+            <p>PKB adalah instrumen penting yang melindungi hak-hak dasar karyawan dan memastikan adanya kepastian hukum dalam hubungan kerja di PT Yudhistira Ghalia Indonesia.</p>
 
             <div class="status-box">
-                <h4>⚠️ Update Status Pendaftaran (April 2026):</h4>
-                <p>Saat ini draf PKB sedang dalam tahap <strong>sinkronisasi alamat kantor pusat</strong>. Sesuai arahan Disnaker Bogor, pendaftaran harus menggunakan alamat domisili hukum di Jakarta (Pramuka) agar sinkron dengan data Kemenaker RI. Pengurus terus mengawal proses ini agar cepat rampung.</p>
+                <h4>⚠️ Progres Pendaftaran PKB</h4>
+                <p>Status saat ini sedang dalam <strong>sinkronisasi alamat kantor pusat</strong> (Pramuka) sesuai arahan Disnaker Bogor. Hal ini dilakukan agar administrasi kita di Kemenaker RI berjalan lancar dan sah secara hukum nasional.</p>
             </div>
 
-            <h3>Poin-Poin Penting Perubahan:</h3>
+            <h3>Poin Penting PKB Terkini:</h3>
             
             <div class="pkb-point">
-                <strong>1. Penyesuaian Kenaikan Gaji</strong>
-                <p>Kenaikan gaji berkala yang sebelumnya dilakukan setiap bulan September, kini disepakati bergeser ke setiap bulan <strong>Januari</strong> mulai tahun berjalan.</p>
+                <strong>Kenaikan Gaji Tahunan</strong>
+                <p>Perubahan jadwal kenaikan gaji tahunan kini resmi bergeser ke setiap bulan <strong>Januari</strong> (sebelumnya September) untuk menyesuaikan dengan tahun buku perusahaan.</p>
             </div>
 
             <div class="pkb-point">
-                <strong>2. Upah Lembur Driver</strong>
-                <p>Pengurus sedang mengusulkan agar tugas driver di hari libur dihitung sebagai <strong>jam lembur resmi</strong> sesuai regulasi pemerintah, bukan sekadar insentif tetap.</p>
+                <strong>Status Lembur Driver</strong>
+                <p>Sedang diperjuangkan agar sistem insentif hari libur bagi driver dikonversi menjadi <strong>upah lembur</strong> sesuai regulasi ketenagakerjaan yang berlaku.</p>
             </div>
 
             <div class="pkb-point">
-                <strong>3. Hubungan Industrial Transformatif</strong>
-                <p>Mengedepankan dialog sebelum mengambil keputusan strategis yang berdampak pada karyawan (seperti mutasi, demosi, atau perubahan status kontrak).</p>
+                <strong>Jaminan Sosial</strong>
+                <p>Memastikan seluruh karyawan terdaftar dan mendapatkan manfaat maksimal dari BPJS Ketenagakerjaan dan BPJS Kesehatan.</p>
             </div>
         </main>
 
-        <aside class="sidebar">
-            <h3>Dokumen PKB</h3>
-            <p style="font-size: 0.9rem; margin-top: 10px;">Draf lengkap PKB periode terbaru dapat Anda lihat atau unduh melalui halaman unduhan untuk dipelajari lebih lanjut oleh seluruh anggota.</p>
-            <a href="unduhan.html" style="display: inline-block; margin-top: 15px; color: #cc0000; font-weight: bold; text-decoration: none;">&raquo; Ke Halaman Unduhan</a>
+        <aside>
+            <div class="sidebar-news-box">
+                <h3>Berita Terbaru</h3>
+                <img src="may-day-01.webp" alt="Pamflet May Day" class="news-thumb">
+                <p style="font-size: 0.85rem; color: #666;">27 April 2026</p>
+                <a href="berita.html" class="news-link">Solidarity Touring: Labor Go to the Beach Pelabuhan Ratu! &raquo;</a>
+            </div>
+
+            <div class="sidebar-links">
+                <h3 style="color: #003366; margin-bottom: 15px; font-size: 1.1rem;">Unduh Dokumen</h3>
+                <ul style="list-style: none;">
+                    <li><a href="unduhan.html" style="color: #cc0000; text-decoration: none; font-weight: bold; font-size: 0.9rem;">&raquo; Klik di sini untuk Draf PKB</a></li>
+                </ul>
+            </div>
         </aside>
     </div>
 
