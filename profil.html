@@ -5,35 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Organisasi | SEKAR YGI</title>
     <style>
-        /* CSS Global - Konsisten dengan Beranda */
+        /* CSS Global */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
 
-        .top-bar { background-color: #002244; color: #fff; padding: 8px 10%; display: flex; justify-content: space-between; font-size: 0.8rem; }
+        /* KELOMPOK STICKY (Top Bar + Header) */
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-        header { background-color: #fff; padding: 25px 10%; display: flex; align-items: center; border-bottom: 5px solid #cc0000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .top-bar { 
+            background-color: #002244; 
+            color: #fff; 
+            padding: 8px 10%; 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 0.8rem; 
+        }
+
+        header { 
+            background-color: #fff; 
+            padding: 20px 10%; 
+            display: flex; 
+            align-items: center; 
+            border-bottom: 5px solid #cc0000; 
+        }
+
         .logo-container { display: flex; align-items: center; }
-        .logo-img { height: 100px; width: auto; margin-right: 30px; }
-        .logo-text h1 { font-size: 2.8rem; color: #003366; line-height: 1; letter-spacing: 2px; margin-bottom: 8px; font-weight: 800; }
-        .logo-text p { font-size: 1.1rem; color: #444; font-weight: 500; border-top: 2px solid #cc0000; padding-top: 5px; text-transform: uppercase; }
+        .logo-img { height: 90px; width: auto; margin-right: 25px; }
+        .logo-text h1 { font-size: 2.6rem; color: #003366; line-height: 1; letter-spacing: 2px; margin-bottom: 5px; font-weight: 800; }
+        .logo-text p { font-size: 1rem; color: #444; font-weight: 500; border-top: 2px solid #cc0000; padding-top: 5px; text-transform: uppercase; }
 
-        nav { background-color: #003366; padding: 0 10%; position: sticky; top: 0; z-index: 1000; }
+        /* Navigasi - TIDAK STICKY (Ikut Ter-scroll) */
+        nav { 
+            background-color: #003366; 
+            padding: 0 10%; 
+            position: relative;
+            z-index: 1000; 
+        }
         nav ul { list-style: none; display: flex; }
         nav ul li a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
         nav ul li a:hover { background-color: #cc0000; }
 
-        /* Container Profil */
-        .container { padding: 50px 10%; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
-        .main-content { background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        /* Layout Konten Profil */
+        .container { padding: 40px 10%; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .main-content { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         
         h2 { color: #003366; margin-bottom: 20px; font-size: 2rem; border-left: 5px solid #cc0000; padding-left: 15px; }
-        h3 { color: #003366; margin: 25px 0 10px 0; }
+        h3 { color: #003366; margin: 25px 0 10px 0; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px; }
         p { margin-bottom: 15px; text-align: justify; }
 
-        .pengurus-list { margin-left: 20px; margin-bottom: 20px; }
+        .pengurus-list { margin-left: 20px; margin-bottom: 20px; list-style: square; }
         .pengurus-list li { margin-bottom: 8px; }
 
-        /* Sidebar */
+        /* Sidebar Style */
         .sidebar-news-box { background: #fff; padding: 20px; border-radius: 8px; border-left: 6px solid #cc0000; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
         .sidebar-news-box h3 { color: #cc0000; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; }
         .news-thumb { width: 100%; border-radius: 4px; margin-bottom: 10px; border: 1px solid #ddd; }
@@ -41,37 +69,43 @@
 
         .sidebar-links { background: #fff; padding: 25px; border-radius: 8px; border-top: 6px solid #003366; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
-        footer { background-color: #001a33; color: #bdc3c7; padding: 50px 10% 20px 10%; margin-top: 60px; }
-        .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid #34495e; font-size: 0.85rem; }
+        /* Footer */
+        footer { background-color: #001a33; color: #bdc3c7; padding: 40px 10% 20px 10%; margin-top: 50px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #34495e; font-size: 0.8rem; }
 
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
-            .top-bar { flex-direction: column; text-align: center; gap: 5px; }
-            header { flex-direction: column; text-align: center; padding: 20px 5%; }
-            .logo-img { margin-right: 0; margin-bottom: 15px; height: 70px; }
-            .logo-text h1 { font-size: 1.8rem; }
+            .top-bar { flex-direction: column; text-align: center; padding: 5px; font-size: 0.7rem; }
+            header { padding: 15px 5%; flex-direction: column; text-align: center; }
+            .logo-img { margin-right: 0; margin-bottom: 10px; height: 60px; }
+            .logo-text h1 { font-size: 1.6rem; }
+            .logo-text p { font-size: 0.75rem; border-top: 1px solid #cc0000; }
+            
             nav ul { flex-direction: column; }
             nav ul li a { text-align: center; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            
             .container { grid-template-columns: 1fr; padding: 20px 5%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div>Profil Organisasi SEKAR YGI</div>
-        <div>Solidaritas & Profesionalisme</div>
-    </div>
-
-    <header>
-        <div class="logo-container">
-            <img src="logo-sekar.webp" alt="Logo SEKAR YGI" class="logo-img">
-            <div class="logo-text">
-                <h1>SEKAR YGI</h1>
-                <p>Serikat Karyawan Yudhistira Ghalia Indonesia</p>
-            </div>
+    <div class="sticky-wrapper">
+        <div class="top-bar">
+            <div>Senin, 27 April 2026</div>
+            <div>Profil Organisasi</div>
         </div>
-    </header>
+
+        <header>
+            <div class="logo-container">
+                <img src="logo-sekar.webp" alt="Logo SEKAR YGI" class="logo-img">
+                <div class="logo-text">
+                    <h1>SEKAR YGI</h1>
+                    <p>Serikat Karyawan Yudhistira Ghalia Indonesia</p>
+                </div>
+            </div>
+        </header>
+    </div>
 
     <nav>
         <ul>
@@ -87,26 +121,28 @@
     <div class="container">
         <main class="main-content">
             <h2>Profil SEKAR YGI</h2>
-            <p>Serikat Karyawan Yudhistira Ghalia Indonesia (SEKAR YGI) adalah organisasi mandiri yang dibentuk oleh dan untuk karyawan PT Yudhistira Ghalia Indonesia. Kami hadir sebagai mitra strategis perusahaan dalam menciptakan lingkungan kerja yang produktif, adil, dan harmonis.</p>
+            <p>Serikat Karyawan Yudhistira Ghalia Indonesia (SEKAR YGI) lahir dari semangat kebersamaan seluruh karyawan untuk menciptakan wadah komunikasi yang sehat antara pekerja dan perusahaan. Kami berkomitmen menjaga profesionalitas dalam setiap langkah perjuangan organisasi.</p>
 
             <h3>Visi</h3>
-            <p>Menjadi serikat karyawan yang profesional, berintegritas, dan mampu memperjuangkan hak-hak karyawan demi terwujudnya kesejahteraan bersama.</p>
+            <p>Menjadi mitra strategis perusahaan yang mandiri dan profesional dalam mewujudkan kesejahteraan karyawan yang berkeadilan.</p>
 
-            <h3>Misi</h3>
+            <h3>Misi Utama</h3>
             <ul class="pengurus-list">
-                <li>Melindungi dan membela hak serta kepentingan karyawan.</li>
-                <li>Meningkatkan kesejahteraan anggota dan keluarganya.</li>
-                <li>Membangun komunikasi yang sehat dan konstruktif dengan pihak manajemen.</li>
-                <li>Mendorong peningkatan produktivitas dan kualitas kerja karyawan.</li>
+                <li>Melindungi hak-hak normatif seluruh karyawan sesuai regulasi yang berlaku.</li>
+                <li>Membangun iklim hubungan industrial yang harmonis melalui dialog konstruktif.</li>
+                <li>Meningkatkan kompetensi dan solidaritas seluruh anggota serikat.</li>
+                <li>Mengawal pelaksanaan PKB agar tepat sasaran dan memberikan manfaat nyata.</li>
             </ul>
 
-            <h3>Struktur Pengurus Utama</h3>
-            <p>Berikut adalah beberapa pengurus yang menggerakkan roda organisasi:</p>
+            <h3>Jajaran Pengurus Utama</h3>
             <ul class="pengurus-list">
-                <li><strong>Ketua:</strong> Bapak Erikasman Gafar</li>
-                <li><strong>Sekretaris:</strong> Bapak Djani Wahyudi</li>
-                <li><strong>Bendahara:</strong> Bapak M. Khoir</li>
-                <li><em>Beserta jajaran Koordinator Unit dan Bidang.</em></li>
+                <li><strong>Ketua Umum:</strong> Sdr. Erikasman Gafar</li>
+                <li><strong>Sekjend:</strong> Sdr. Djani Wahyudi</li>
+                <li><strong>Bendahara:</strong> Sdri. M. Khoir</li>
+                <li><strong>Advokasi1:</strong> Sdr. Haji Darma Amisti</li>
+                <li><strong>Advokasi2:</strong> Sdr. Karto</li>
+                <li><strong>Humas1:</strong> Sdr. Iyan Jaelani</li>
+                <li><strong>Humas2:</strong> Sdr. Hardi</li>
             </ul>
         </main>
 
@@ -115,14 +151,14 @@
                 <h3>Berita Terbaru</h3>
                 <img src="may-day-01.webp" alt="Pamflet May Day" class="news-thumb">
                 <p style="font-size: 0.85rem; color: #666;">27 April 2026</p>
-                <a href="berita.html" class="news-link">Solidarity Touring: Labor Go to the Beach Pelabuhan Ratu! &raquo;</a>
+                <a href="berita.html" class="news-link">Solidarity Touring: Labor Go to the Beach! &raquo;</a>
             </div>
 
             <div class="sidebar-links">
-                <h3 style="color: #003366; margin-bottom: 15px; font-size: 1.1rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;">Aksi Cepat</h3>
+                <h3 style="color: #003366; margin-bottom: 15px; font-size: 1.1rem;">Informasi Lain</h3>
                 <ul style="list-style: none;">
                     <li style="margin-bottom: 12px;"><a href="unduhan.html" style="color: #003366; text-decoration: none; font-weight: bold; font-size: 0.9rem;">&raquo; Download AD/ART</a></li>
-                    <li style="margin-bottom: 12px;"><a href="keanggotaan.html" style="color: #003366; text-decoration: none; font-weight: bold; font-size: 0.9rem;">&raquo; Cara Daftar Anggota</a></li>
+                    <li style="margin-bottom: 12px;"><a href="keanggotaan.html" style="color: #003366; text-decoration: none; font-weight: bold; font-size: 0.9rem;">&raquo; Alur Pendaftaran Anggota</a></li>
                 </ul>
             </div>
         </aside>
