@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil | SEKAR YGI</title>
+    <style>
+        /* CSS tetap sama agar konsisten */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
+        .top-bar { background-color: #002244; color: #fff; padding: 8px 10%; display: flex; justify-content: space-between; font-size: 0.8rem; }
+        header { background-color: #fff; padding: 25px 10%; display: flex; align-items: center; border-bottom: 5px solid #cc0000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo-container { display: flex; align-items: center; }
+        .logo-img { height: 100px; width: auto; margin-right: 30px; }
+        .logo-text h1 { font-size: 2.8rem; color: #003366; line-height: 1; letter-spacing: 2px; margin-bottom: 8px; font-weight: 800; }
+        .logo-text p { font-size: 1.1rem; color: #444; font-weight: 500; border-top: 2px solid #cc0000; padding-top: 5px; text-transform: uppercase; }
+        nav { background-color: #003366; padding: 0 10%; position: sticky; top: 0; z-index: 1000; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
+        nav ul li a:hover { background-color: #cc0000; }
+        
+        /* Layout Konten Profil */
+        .container { padding: 50px 10%; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+        .main-content { background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .sidebar { background: #fff; padding: 25px; border-radius: 8px; border-top: 6px solid #003366; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: fit-content; }
+        
+        h2 { color: #003366; margin-bottom: 20px; font-size: 2rem; border-left: 5px solid #cc0000; padding-left: 15px; }
+        h3 { color: #003366; margin: 25px 0 15px 0; }
+        .struktur-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .struktur-table th, .struktur-table td { padding: 12px; border: 1px solid #eee; text-align: left; }
+        .struktur-table th { background-color: #f8f9fa; color: #003366; }
+
+        footer { background-color: #001a33; color: #bdc3c7; padding: 50px 10% 20px 10%; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; margin-bottom: 30px; }
+        .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid #34495e; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>Profil Organisasi</div>
+        <div>Kontak: sekretariat@sekar-ygi.or.id</div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo-sekar.webp" alt="Logo SEKAR YGI" class="logo-img">
+            <div class="logo-text">
+                <h1>SEKAR YGI</h1>
+                <p>Serikat Karyawan Yudhistira Ghalia Indonesia</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">BERANDA</a></li>
+            <li><a href="profil.html">PROFIL</a></li>
+            <li><a href="pkb.html">PKB</a></li>
+            <li><a href="keanggotaan.html">KEANGGOTAAN</a></li>
+            <li><a href="berita.html">BERITA</a></li>
+            <li><a href="unduhan.html">UNDUHAN</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main class="main-content">
+            <h2>Profil Organisasi</h2>
+            <p>Serikat Karyawan Yudhistira Ghalia Indonesia (SEKAR YGI) adalah organisasi mandiri yang menjadi wadah bagi seluruh karyawan PT Yudhistira Ghalia Indonesia untuk bersatu, berjuang, dan bermartabat dalam menjalin hubungan industrial dengan manajemen.</p>
+            
+            <h3>Visi</h3>
+            <p>Menjadi organisasi pekerja yang profesional, mandiri, dan berintegritas guna mewujudkan kesejahteraan karyawan serta mendukung keberlanjutan perusahaan.</p>
+            
+            <h3>Misi</h3>
+            <ul style="margin-left: 20px;">
+                <li>Meningkatkan kualitas hubungan industrial yang harmonis melalui dialog sosial.</li>
+                <li>Melindungi dan memperjuangkan hak-hak karyawan sesuai peraturan perundangan.</li>
+                <li>Memberikan edukasi ketenagakerjaan bagi seluruh anggota.</li>
+                <li>Mengupayakan kesejahteraan yang berkeadilan bagi seluruh pekerja.</li>
+            </ul>
+
+            <h3>Struktur Pengurus Periode Terbaru</h3>
+            <table class="struktur-table">
+                <thead>
+                    <tr>
+                        <th>Jabatan</th>
+                        <th>Nama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ketua Umum</td>
+                        <td>Erickasman Gafar</td>
+                    </tr>
+                    <tr>
+                        <td>Bendahara</td>
+                        <td>Bida Palupi</td>
+                    </tr>
+                    <tr>
+                        <td>SekJend</td>
+                        <td>Djani Wahyudi</td>
+                    </tr>
+                    <tr>
+                        <td>Penasihat</td>
+                        <td>Haji Darma</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <aside class="sidebar">
+            <h3>Informasi Lain</h3>
+            <p style="font-size: 0.9rem; margin-top: 10px;">SEKAR YGI berafiliasi dengan ASPEK Indonesia untuk memperkuat jejaring perjuangan buruh di tingkat nasional.</p>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>SEKAR YGI</h4>
+                <p>Wadah aspirasi yang profesional, transparan, dan mandiri bagi karyawan PT Yudhistira Ghalia Indonesia.</p>
+            </div>
+            <div>
+                <h4>Alamat Sekretariat</h4>
+                <p>Jl. Matraman Raya No.19, Jakarta Timur<br>Cabang: Bogor</p>
+            </div>
+            <div>
+                <h4>Motto</h4>
+                <p>Solidaritas, Keadilan, Kesejahteraan.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Serikat Karyawan Yudhistira Ghalia Indonesia.
+        </div>
+    </footer>
+
+</body>
+</html>

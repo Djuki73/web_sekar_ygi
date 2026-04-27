@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unduhan | SEKAR YGI</title>
+    <style>
+        /* CSS tetap konsisten agar tampilan seragam */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
+        .top-bar { background-color: #002244; color: #fff; padding: 8px 10%; display: flex; justify-content: space-between; font-size: 0.8rem; }
+        header { background-color: #fff; padding: 25px 10%; display: flex; align-items: center; border-bottom: 5px solid #cc0000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo-container { display: flex; align-items: center; }
+        .logo-img { height: 100px; width: auto; margin-right: 30px; }
+        .logo-text h1 { font-size: 2.8rem; color: #003366; line-height: 1; letter-spacing: 2px; margin-bottom: 8px; font-weight: 800; }
+        .logo-text p { font-size: 1.1rem; color: #444; font-weight: 500; border-top: 2px solid #cc0000; padding-top: 5px; text-transform: uppercase; }
+        nav { background-color: #003366; padding: 0 10%; position: sticky; top: 0; z-index: 1000; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
+        nav ul li a:hover { background-color: #cc0000; }
+        
+        .container { padding: 50px 10%; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+        .main-content { background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .sidebar { background: #fff; padding: 25px; border-radius: 8px; border-top: 6px solid #003366; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: fit-content; }
+        
+        h2 { color: #003366; margin-bottom: 20px; font-size: 2rem; border-left: 5px solid #cc0000; padding-left: 15px; }
+        
+        /* Style Tabel Unduhan */
+        .download-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .download-table th, .download-table td { padding: 15px; border-bottom: 1px solid #eee; text-align: left; }
+        .download-table th { background-color: #f8f9fa; color: #003366; font-weight: bold; }
+        .btn-download { 
+            background-color: #cc0000; 
+            color: white; 
+            padding: 8px 15px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-size: 0.85rem; 
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-download:hover { background-color: #003366; }
+        
+        footer { background-color: #001a33; color: #bdc3c7; padding: 50px 10% 20px 10%; margin-top: 60px; }
+        .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid #34495e; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>Pusat Dokumen & Formulir</div>
+        <div>Format File: PDF / DOCX</div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo-sekar.png" alt="Logo SEKAR YGI" class="logo-img">
+            <div class="logo-text">
+                <h1>SEKAR YGI</h1>
+                <p>Serikat Karyawan Yudhistira Ghalia Indonesia</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">BERANDA</a></li>
+            <li><a href="profil.html">PROFIL</a></li>
+            <li><a href="pkb.html">PKB</a></li>
+            <li><a href="keanggotaan.html">KEANGGOTAAN</a></li>
+            <li><a href="berita.html">BERITA</a></li>
+            <li><a href="unduhan.html">UNDUHAN</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main class="main-content">
+            <h2>Pusat Unduhan</h2>
+            <p>Silakan unduh dokumen resmi organisasi di bawah ini. Pastikan Anda memiliki aplikasi pembaca PDF untuk membuka dokumen-dokumen berikut.</p>
+            
+            <table class="download-table">
+                <thead>
+                    <tr>
+                        <th>Nama Dokumen</th>
+                        <th>Kategori</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Formulir Pendaftaran Anggota</strong></td>
+                        <td>Keanggotaan</td>
+                        <td><a href="#" class="btn-download">UNDUH</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Draf PKB Periode 2024-2026</strong></td>
+                        <td>PKB</td>
+                        <td><a href="#" class="btn-download">UNDUH</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>AD / ART SEKAR YGI</strong></td>
+                        <td>Organisasi</td>
+                        <td><a href="#" class="btn-download">UNDUH</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Surat Edaran Iuran Baru 2026</strong></td>
+                        <td>Informasi</td>
+                        <td><a href="#" class="btn-download">UNDUH</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <aside class="sidebar">
+            <h3>Butuh Bantuan?</h3>
+            <p style="font-size: 0.9rem; margin-top: 10px;">Jika dokumen yang Anda cari tidak tersedia, silakan hubungi bagian sekretariat di kantor Bogor atau Jakarta.</p>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2026 Serikat Karyawan Yudhistira Ghalia Indonesia.
+        </div>
+    </footer>
+
+</body>
+</html>
