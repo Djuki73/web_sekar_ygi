@@ -5,177 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berita & Agenda | SEKAR YGI</title>
     <style>
-        /* CSS Global */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
+        /* CSS Global & Glassmorphism */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background: #001a33; color: #fff; line-height: 1.6; overflow-x: hidden; }
 
-        /* KELOMPOK STICKY (Top Bar + Header) */
+        .parallax-bg {
+            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop');
+            height: 100vh; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;
+            position: fixed; width: 100%; z-index: -1; filter: brightness(0.4);
+        }
+
         .sticky-wrapper {
-            position: sticky;
-            top: 0;
-            z-index: 1100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1100;
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .top-bar { 
-            background-color: #002244; 
-            color: #fff; 
-            padding: 8px 10%; 
-            display: flex; 
-            justify-content: space-between; 
-            font-size: 0.8rem; 
-        }
+        header { padding: 15px 10%; display: flex; align-items: center; justify-content: space-between; }
+        .logo-img { height: 50px; margin-right: 15px; }
+        .logo-text h1 { font-size: 1.5rem; letter-spacing: 2px; font-weight: 800; color: #fff; }
 
-        header { 
-            background-color: #fff; 
-            padding: 20px 10%; 
-            display: flex; 
-            align-items: center; 
-            border-bottom: 5px solid #cc0000; 
-        }
-
-        .logo-container { display: flex; align-items: center; }
-        .logo-img { height: 90px; width: auto; margin-right: 25px; }
-        .logo-text h1 { font-size: 2.6rem; color: #003366; line-height: 1; letter-spacing: 2px; margin-bottom: 5px; font-weight: 800; }
-        .logo-text p { font-size: 1rem; color: #444; font-weight: 500; border-top: 2px solid #cc0000; padding-top: 5px; text-transform: uppercase; }
-
-        /* Navigasi - TIDAK STICKY */
-        nav { 
-            background-color: #003366; 
-            padding: 0 10%; 
-            position: relative;
-            z-index: 1000; 
-        }
         nav ul { list-style: none; display: flex; }
-        nav ul li a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
-        nav ul li a:hover { background-color: #cc0000; }
+        nav ul li a { padding: 10px 20px; color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        nav ul li a:hover { color: #cc0000; }
 
-        /* Layout Konten Berita */
-        .container { padding: 40px 10%; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        .main-content { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .container { padding: 60px 10%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
         
-        h2 { color: #003366; margin-bottom: 30px; font-size: 2rem; border-left: 5px solid #cc0000; padding-left: 15px; }
-        
-        /* Style Item Berita */
-        .news-item { margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid #eee; }
-        .news-date { font-size: 0.85rem; color: #cc0000; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .news-item h3 { color: #003366; font-size: 1.6rem; margin-bottom: 15px; line-height: 1.3; }
-        
-        /* Pamflet Styling */
-        .news-pamflet { 
-            width: 100%; 
-            max-width: 500px; 
-            display: block; 
-            margin: 20px auto; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 3px solid #cc0000;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
-        .touring-info { 
-            background: #fef9e7; 
-            padding: 20px; 
-            border-radius: 8px; 
-            border-left: 5px solid #f1c40f;
-            margin: 20px 0;
-            font-size: 0.95rem;
-        }
+        h2 { color: #fff; font-size: 2.2rem; margin-bottom: 30px; border-left: 6px solid #cc0000; padding-left: 20px; }
 
-        /* Sidebar Style */
-        .sidebar-links { background: #fff; padding: 25px; border-radius: 8px; border-top: 6px solid #003366; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        /* News Item Style */
+        .news-post { margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .news-date { color: #ff4d4d; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; }
+        .news-post h3 { font-size: 1.6rem; margin: 10px 0; color: #fff; }
+        .news-thumb { width: 100%; max-height: 300px; object-fit: cover; border-radius: 15px; margin: 15px 0; border: 1px solid rgba(255,255,255,0.1); }
+        
+        .read-more { display: inline-block; color: #fff; background: #cc0000; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
+        .read-more:hover { transform: scale(1.05); background: #990000; }
 
-        /* Footer */
-        footer { background-color: #001a33; color: #bdc3c7; padding: 40px 10% 20px 10%; margin-top: 50px; }
-        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #34495e; font-size: 0.8rem; }
+        .sidebar-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; }
 
-        /* --- RESPONSIVE MOBILE --- */
-        @media (max-width: 768px) {
-            .top-bar { flex-direction: column; text-align: center; padding: 5px; font-size: 0.7rem; }
-            header { padding: 15px 5%; flex-direction: column; text-align: center; }
-            .logo-img { margin-right: 0; margin-bottom: 10px; height: 60px; }
-            .logo-text h1 { font-size: 1.6rem; }
-            .logo-text p { font-size: 0.75rem; border-top: 1px solid #cc0000; }
-            
-            nav ul { flex-direction: column; }
-            nav ul li a { text-align: center; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .container { grid-template-columns: 1fr; padding: 20px 5%; }
-            .news-item h3 { font-size: 1.3rem; }
+        @media (max-width: 992px) {
+            .container { grid-template-columns: 1fr; padding: 40px 5%; }
+            header { flex-direction: column; text-align: center; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
-
+    <div class="parallax-bg"></div>
     <div class="sticky-wrapper">
-        <div class="top-bar">
-            <div>Senin, 27 April 2026</div>
-            <div>Berita & Agenda</div>
-        </div>
-
         <header>
-            <div class="logo-container">
-                <img src="logo-sekar.webp" alt="Logo SEKAR YGI" class="logo-img">
-                <div class="logo-text">
-                    <h1>SEKAR YGI</h1>
-                    <p>Serikat Karyawan Yudhistira Ghalia Indonesia</p>
-                </div>
-            </div>
+            <div class="logo-container"><img src="logo-sekar.webp" alt="Logo" class="logo-img"><div class="logo-text"><h1>SEKAR YGI</h1></div></div>
+            <nav><ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="pkb.html">PKB</a></li>
+                <li><a href="berita.html">Berita</a></li>
+            </ul></nav>
         </header>
     </div>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">BERANDA</a></li>
-            <li><a href="profil.html">PROFIL</a></li>
-            <li><a href="pkb.html">PKB</a></li>
-            <li><a href="keanggotaan.html">KEANGGOTAAN</a></li>
-            <li><a href="berita.html">BERITA</a></li>
-            <li><a href="unduhan.html">UNDUHAN</a></li>
-        </ul>
-    </nav>
-
     <div class="container">
-        <main class="main-content">
-            <h2>Berita & Kegiatan</h2>
+        <main>
+            <div class="glass-card">
+                <h2>Berita & Agenda</h2>
 
-            <div class="news-item">
-                <span class="news-date">27 April 2026</span>
-                <h3>Solidarity Touring: Labor Go to the Beach Pelabuhan Ratu!</h3>
-                <p>Dalam rangka memperingati Hari Buruh Internasional 2026, SEKAR YGI mengadakan kegiatan touring bersama menuju Pelabuhan Ratu. Kegiatan ini bertujuan untuk melepaskan penat sekaligus memperkuat ikatan persaudaraan antar anggota.</p>
-                
-                <img src="may-day-01.webp" alt="Pamflet May Day 2026" class="news-pamflet">
+                <article class="news-post">
+                    <span class="news-date">27 April 2026</span>
+                    <h3>Solidarity Touring: Labor Go to the Beach Pelabuhan Ratu!</h3>
+                    <img src="may-day-01.webp" alt="May Day" class="news-thumb">
+                    <p style="margin-bottom: 20px; opacity: 0.8;">Menyambut Hari Buruh Internasional, SEKAR YGI mengajak seluruh anggota untuk mempererat tali persaudaraan...</p>
+                    <a href="berita/touring-mayday-2026.html" class="read-more">Baca Selengkapnya &rarr;</a>
+                </article>
 
-                <div class="touring-info">
-                    <strong>Detail Kegiatan:</strong><br>
-                    📅 Tanggal: Jumat, 1 Mei 2026<br>
-                    🕖 Kumpul: 07.00 WIB di Graha Setiabudi<br>
-                    📍 Tujuan: Pantai Citepus, Pelabuhan Ratu<br>
-                    🏍️ Persyaratan: Safety gear lengkap dan kondisi motor prima.
-                </div>
-            </div>
-
-            <div class="news-item">
-                <span class="news-date">10 Februari 2026</span>
-                <h3>Pertemuan Koordinasi Internal Pengurus SEKAR YGI</h3>
-                <p>Pengurus pusat SEKAR YGI melakukan pertemuan koordinasi untuk mematangkan draf usulan PKB tahun 2026. Fokus utama adalah sinkronisasi administrasi dan persiapan dialog dengan pihak manajemen.</p>
+                <article class="news-post" style="border:none;">
+                    <span class="news-date">10 Februari 2026</span>
+                    <h3>Koordinasi Sinkronisasi Alamat Disnaker</h3>
+                    <p style="margin-bottom: 20px; opacity: 0.8;">Pengurus inti melakukan pertemuan intensif guna membahas legalitas alamat kantor pusat sesuai arahan Disnaker Bogor...</p>
+                    <a href="berita/update-disnaker.html" class="read-more">Baca Selengkapnya &rarr;</a>
+                </article>
             </div>
         </main>
 
         <aside>
-            <div class="sidebar-links">
-                <h3 style="color: #003366; margin-bottom: 15px; font-size: 1.1rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;">Link Cepat</h3>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 12px;"><a href="unduhan.html" style="color: #003366; text-decoration: none; font-weight: bold; font-size: 0.9rem;">&raquo; Download Formulir</a></li>
-                    <li style="margin-bottom: 12px;"><a href="keanggotaan.html" style="color: #003366; text-decoration: none; font-weight: bold; font-size: 0.9rem;">&raquo; Info Iuran 2026</a></li>
-                </ul>
+            <div class="sidebar-card">
+                <h4 style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">Arsip Dokumen</h4>
+                <a href="unduhan.html" style="color: #ff4d4d; text-decoration: none; font-weight: bold;">» Download Formulir & PKB</a>
             </div>
         </aside>
     </div>
-
-    <footer>
-        <div class="footer-bottom">
-            &copy; 2026 Serikat Karyawan Yudhistira Ghalia Indonesia.
-        </div>
-    </footer>
-
+    <footer style="padding: 40px; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.4);">&copy; 2026 SEKAR YGI</footer>
 </body>
 </html>

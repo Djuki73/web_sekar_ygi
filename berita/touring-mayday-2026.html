@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Berita | SEKAR YGI</title>
+    <style>
+        /* CSS Sama dengan berita.html, hanya disesuaikan sedikit */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background: #001a33; color: #fff; line-height: 1.6; }
+        .parallax-bg {
+            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop');
+            height: 100vh; background-attachment: fixed; background-position: center; background-size: cover;
+            position: fixed; width: 100%; z-index: -1; filter: brightness(0.3);
+        }
+        .sticky-wrapper { position: sticky; top: 0; z-index: 1100; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        header { padding: 15px 10%; display: flex; align-items: center; justify-content: space-between; }
+        .logo-img { height: 40px; margin-right: 15px; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li a { padding: 10px 20px; color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+
+        .container { padding: 40px 10%; max-width: 900px; margin: 0 auto; }
+        .glass-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 40px; }
+        
+        .back-btn { display: inline-block; margin-bottom: 20px; color: #ff4d4d; text-decoration: none; font-weight: bold; }
+        h2 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.2; }
+        .meta { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 30px; }
+        .full-img { width: 100%; border-radius: 15px; margin-bottom: 30px; }
+        p { margin-bottom: 20px; text-align: justify; opacity: 0.9; }
+
+        @media (max-width: 768px) { .container { padding: 20px 5%; } h2 { font-size: 1.6rem; } }
+    </style>
+</head>
+<body>
+    <div class="parallax-bg"></div>
+    <div class="sticky-wrapper">
+        <header>
+            <div class="logo-container"><img src="../logo-sekar.webp" alt="Logo" class="logo-img"></div>
+            <nav><ul>
+                <li><a href="../index.html">Beranda</a></li>
+                <li><a href="../berita.html">Kembali</a></li>
+            </ul></nav>
+        </header>
+    </div>
+
+    <div class="container">
+        <article class="glass-card">
+            <a href="../berita.html" class="back-btn">&larr; Kembali ke Berita</a>
+            <h2>Solidarity Touring: Labor Go to the Beach Pelabuhan Ratu!</h2>
+            <div class="meta">Diposting pada 27 April 2026 | Oleh Sekretariat</div>
+            
+            <img src="../may-day-01.webp" alt="May Day" class="full-img">
+
+            <p>BOGOR - Serikat Karyawan Yudhistira Ghalia Indonesia (SEKAR YGI) kembali mengadakan agenda tahunan "Solidarity Touring" guna memperingati Hari Buruh Internasional 2026.</p>
+            <p>Kegiatan yang ditujukan untuk mempererat silaturahmi antar anggota ini akan dilaksanakan dengan rute menuju Pantai Citepus, Pelabuhan Ratu. Seluruh anggota diharapkan tetap mengedepankan keamanan berkendara (safety riding).</p>
+            <p>Pendaftaran dapat dilakukan melalui koordinator unit masing-masing paling lambat 29 April 2026.</p>
+        </article>
+    </div>
+</body>
+</html>

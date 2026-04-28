@@ -3,156 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEKAR YGI | Serikat Karyawan Yudhistira Ghalia Indonesia</title>
+    <title>SEKAR YGI | Premium Portal</title>
     <style>
         /* CSS Global */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        
+        body { 
+            background: #001a33; /* Warna dasar gelap agar efek kaca terlihat */
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        /* KELOMPOK STICKY (Top Bar + Header) */
+        /* --- 1. PARALLAX BACKGROUND LAYER --- */
+        .parallax-bg {
+            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop');
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: fixed;
+            width: 100%;
+            z-index: -1;
+            filter: brightness(0.5); /* Gelapkan sedikit agar teks aman */
+        }
+
+        /* --- 2. GLASSMORPHISM HEADER --- */
         .sticky-wrapper {
             position: sticky;
             top: 0;
             z-index: 1100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            /* Efek Kaca Buram */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .top-bar { 
-            background-color: #002244; 
-            color: #fff; 
-            padding: 8px 10%; 
-            display: flex; 
-            justify-content: space-between; 
-            font-size: 0.8rem; 
-        }
-
-        header { 
-            background-color: #fff; 
-            padding: 20px 10%; 
-            display: flex; 
-            align-items: center; 
-            border-bottom: 5px solid #cc0000; 
-        }
-
+        header { padding: 15px 10%; display: flex; align-items: center; justify-content: space-between; }
         .logo-container { display: flex; align-items: center; }
-        .logo-img { height: 90px; width: auto; margin-right: 25px; }
-        .logo-text h1 { font-size: 2.6rem; color: #003366; line-height: 1; letter-spacing: 2px; margin-bottom: 5px; font-weight: 800; }
-        .logo-text p { font-size: 1rem; color: #444; font-weight: 500; border-top: 2px solid #cc0000; padding-top: 5px; text-transform: uppercase; }
+        .logo-img { height: 50px; margin-right: 15px; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+        .logo-text h1 { font-size: 1.5rem; letter-spacing: 2px; font-weight: 800; color: #fff; }
 
-        /* Navigasi - TIDAK STICKY */
-        nav { 
-            background-color: #003366; 
-            padding: 0 10%; 
-            position: relative;
-            z-index: 1000; 
-        }
         nav ul { list-style: none; display: flex; }
-        nav ul li a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
-        nav ul li a:hover { background-color: #cc0000; }
+        nav ul li a { padding: 10px 20px; color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        nav ul li a:hover { color: #cc0000; }
 
-        /* Hero & Content */
-        .hero {
-            height: 350px;
-            background-color: #002244;
-            background: linear-gradient(rgba(0,34,68,0.75), rgba(0,34,68,0.75)), 
-                        url('team.webp');
-            background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px;
+        /* Hero Text */
+        .hero-section {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
         }
-        
-        .container { padding: 40px 10%; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        .main-content { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        
-        .sidebar-news-box { background: #fff; padding: 20px; border-radius: 8px; border-left: 6px solid #cc0000; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        .news-thumb { width: 100%; border-radius: 4px; margin-bottom: 10px; border: 1px solid #ddd; }
-        .news-link { color: #003366; text-decoration: none; font-weight: bold; font-size: 0.95rem; display: block; margin-top: 5px; }
+        .hero-section h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 10px; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .hero-section p { font-size: 1.2rem; background: #cc0000; padding: 5px 25px; border-radius: 50px; font-weight: bold; }
 
-        .sidebar-links { background: #fff; padding: 25px; border-radius: 8px; border-top: 6px solid #003366; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        /* --- 3. BENTO GRID WITH GLASSMORPHISM --- */
+        .bento-container {
+            padding: 40px 10% 80px 10%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-        footer { background-color: #001a33; color: #bdc3c7; padding: 40px 10% 20px 10%; margin-top: 50px; }
-        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #34495e; font-size: 0.8rem; }
+        .bento-item {
+            /* Efek Kaca untuk Tiap Kotak */
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 30px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-        /* --- RESPONSIVE MOBILE --- */
+        /* Micro-interactions (Point 3) */
+        .bento-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(204, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .bento-main { grid-column: span 2; grid-row: span 2; background: rgba(204, 0, 0, 0.2); border: 1px solid rgba(204, 0, 0, 0.3); }
+        .bento-wide { grid-column: span 2; }
+
+        .icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .bento-item h3 { font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; }
+        .bento-item p { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
+
+        footer { padding: 40px; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .bento-container { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
-            .top-bar { flex-direction: column; text-align: center; padding: 5px; font-size: 0.7rem; }
-            header { padding: 15px 5%; flex-direction: column; text-align: center; }
-            .logo-img { margin-right: 0; margin-bottom: 10px; height: 60px; }
-            .logo-text h1 { font-size: 1.6rem; }
-            .logo-text p { font-size: 0.75rem; border-top: 1px solid #cc0000; } /* Teks tidak dihapus, hanya diperkecil */
-            
-            nav ul { flex-direction: column; }
-            nav ul li a { text-align: center; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            
-            .container { grid-template-columns: 1fr; padding: 20px 5%; }
-            .hero { height: 250px; }
-            .hero h2 { font-size: 1.4rem; }
+            .parallax-bg { background-attachment: scroll; } /* Matikan fixed di HP agar enteng */
+            header { flex-direction: column; padding: 20px; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero-section h2 { font-size: 2rem; }
+            .bento-container { grid-template-columns: 1fr; padding: 20px 5%; }
+            .bento-main, .bento-wide { grid-column: span 1; grid-row: span 1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="sticky-wrapper">
-        <div class="top-bar">
-            <div>Senin, 27 April 2026</div>
-            <div>Portal Resmi SEKAR YGI</div>
-        </div>
+    <div class="parallax-bg"></div>
 
+    <div class="sticky-wrapper">
         <header>
             <div class="logo-container">
-                <img src="logo-sekar.webp" alt="Logo SEKAR YGI" class="logo-img">
-                <div class="logo-text">
-                    <h1>SEKAR YGI</h1>
-                    <p>Serikat Karyawan Yudhistira Ghalia Indonesia</p>
-                </div>
+                <img src="logo-sekar.webp" alt="Logo" class="logo-img">
+                <div class="logo-text"><h1>SEKAR YGI</h1></div>
             </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="pkb.html">PKB</a></li>
+                    <li><a href="berita.html">Berita</a></li>
+                </ul>
+            </nav>
         </header>
     </div>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">BERANDA</a></li>
-            <li><a href="profil.html">PROFIL</a></li>
-            <li><a href="pkb.html">PKB</a></li>
-            <li><a href="keanggotaan.html">KEANGGOTAAN</a></li>
-            <li><a href="berita.html">BERITA</a></li>
-            <li><a href="unduhan.html">UNDUHAN</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero">
-        <h2>Solidaritas Tanpa Batas</h2>
-        <p>Mewujudkan Kesejahteraan dan Hubungan Industrial yang Harmonis</p>
+    <section class="hero-section">
+        <h2>SOLIDARITAS DIGITAL</h2>
+        <p>Bergerak Maju dalam Harmoni</p>
     </section>
 
-    <div class="container">
-        <main class="main-content">
-            <div style="margin-bottom: 30px;">
-                <h3 style="color: #003366; margin-bottom: 15px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Selamat Datang</h3>
-                <p>Portal ini adalah jendela informasi bagi seluruh karyawan PT Yudhistira Ghalia Indonesia. Temukan informasi terbaru mengenai perjuangan serikat, progres PKB, dan kegiatan anggota di sini.</p>
+    <div class="bento-container">
+        <a href="pkb.html" class="bento-item bento-main">
+            <div>
+                <span class="icon">⚖️</span>
+                <h3>Draf PKB 2026</h3>
+                <p>Kami sedang melakukan sinkronisasi alamat kantor pusat di Disnaker untuk memperkuat legalitas perundingan tahun ini. Pantau terus progresnya di sini.</p>
             </div>
-        </main>
+            <div style="font-weight: bold; color: #ff4d4d; margin-top: 20px;">Cek Progres &rarr;</div>
+        </a>
 
-        <aside>
-            <div class="sidebar-news-box">
-                <h3 style="color: #cc0000; font-size: 1.1rem; margin-bottom: 10px;">BERITA TERBARU</h3>
-                <img src="may-day-01.webp" alt="Pamflet May Day" class="news-thumb">
-                <p style="font-size: 0.85rem; color: #666;">27 April 2026</p>
-                <a href="berita.html" class="news-link">Solidarity Touring: Labor Go to the Beach Pelabuhan Ratu! &raquo;</a>
+        <a href="keanggotaan.html" class="bento-item bento-wide">
+            <div>
+                <span class="icon">💰</span>
+                <h3>Informasi Iuran</h3>
+                <p>Iuran bulanan Rp 20.000 resmi tanpa potongan kupon makan mulai Januari 2026. Dana dikelola transparan untuk kesejahteraan bersama.</p>
             </div>
+        </a>
 
-            <div class="sidebar-links">
-                <h3 style="color: #003366; margin-bottom: 15px;">Link Cepat</h3>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 12px;"><a href="keanggotaan.html" style="color: #003366; text-decoration: none; font-weight: bold;">&raquo; Info Iuran Baru 2026</a></li>
-                    <li style="margin-bottom: 12px;"><a href="unduhan.html" style="color: #003366; text-decoration: none; font-weight: bold;">&raquo; Download Formulir</a></li>
-                </ul>
+        <a href="berita.html" class="bento-item">
+            <div>
+                <span class="icon">🏖️</span>
+                <h3>May Day</h3>
+                <p>Touring Pelabuhan Ratu. Solidaritas di jalan!</p>
             </div>
-        </aside>
+        </a>
+
+        <a href="unduhan.html" class="bento-item">
+            <div>
+                <span class="icon">📄</span>
+                <h3>Dokumen</h3>
+                <p>Ambil Form & AD/ART organisasi.</p>
+            </div>
+        </a>
     </div>
 
     <footer>
-        <div class="footer-bottom">
-            &copy; 2026 Serikat Karyawan Yudhistira Ghalia Indonesia.
-        </div>
+        <p>&copy; 2026 Serikat Karyawan Yudhistira Ghalia Indonesia | Designed with Solidaritas</p>
     </footer>
 
 </body>

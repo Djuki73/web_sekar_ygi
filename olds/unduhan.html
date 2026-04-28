@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Unduhan | SEKAR YGI</title>
+    <style>
+        /* CSS Global */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
+
+        /* KELOMPOK STICKY (Top Bar + Header) */
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .top-bar { 
+            background-color: #002244; 
+            color: #fff; 
+            padding: 8px 10%; 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 0.8rem; 
+        }
+
+        header { 
+            background-color: #fff; 
+            padding: 20px 10%; 
+            display: flex; 
+            align-items: center; 
+            border-bottom: 5px solid #cc0000; 
+        }
+
+        .logo-container { display: flex; align-items: center; }
+        .logo-img { height: 90px; width: auto; margin-right: 25px; }
+        .logo-text h1 { font-size: 2.6rem; color: #003366; line-height: 1; letter-spacing: 2px; margin-bottom: 5px; font-weight: 800; }
+        .logo-text p { font-size: 1rem; color: #444; font-weight: 500; border-top: 2px solid #cc0000; padding-top: 5px; text-transform: uppercase; }
+
+        /* Navigasi - TIDAK STICKY */
+        nav { 
+            background-color: #003366; 
+            padding: 0 10%; 
+            position: relative;
+            z-index: 1000; 
+        }
+        nav ul { list-style: none; display: flex; }
+        nav ul li a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
+        nav ul li a:hover { background-color: #cc0000; }
+
+        /* Layout Konten Unduhan */
+        .container { padding: 40px 10%; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .main-content { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        h2 { color: #003366; margin-bottom: 20px; font-size: 2rem; border-left: 5px solid #cc0000; padding-left: 15px; }
+
+        /* Table Styling */
+        .download-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .download-table th {
+            background-color: #f8f9fa;
+            color: #003366;
+            text-align: left;
+            padding: 15px;
+            border-bottom: 3px solid #003366;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .download-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+        .download-table tr:hover {
+            background-color: #fcfcfc;
+        }
+
+        .btn-download {
+            background-color: #cc0000;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .btn-download:hover {
+            background-color: #003366;
+        }
+
+        .file-info {
+            font-size: 0.75rem;
+            color: #888;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* Sidebar Style */
+        .sidebar-news-box { background: #fff; padding: 20px; border-radius: 8px; border-left: 6px solid #cc0000; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .news-thumb { width: 100%; border-radius: 4px; margin-bottom: 10px; border: 1px solid #ddd; }
+
+        /* Footer */
+        footer { background-color: #001a33; color: #bdc3c7; padding: 40px 10% 20px 10%; margin-top: 50px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #34495e; font-size: 0.8rem; }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .top-bar { flex-direction: column; text-align: center; padding: 5px; font-size: 0.7rem; }
+            header { padding: 15px 5%; flex-direction: column; text-align: center; }
+            .logo-img { margin-right: 0; margin-bottom: 10px; height: 60px; }
+            .logo-text h1 { font-size: 1.6rem; }
+            .logo-text p { font-size: 0.75rem; border-top: 1px solid #cc0000; }
+            
+            nav ul { flex-direction: column; }
+            nav ul li a { text-align: center; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .container { grid-template-columns: 1fr; padding: 20px 5%; }
+            
+            /* Sembunyikan kolom info file di HP agar tabel tidak terlalu lebar */
+            .file-size { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sticky-wrapper">
+        <div class="top-bar">
+            <div>Senin, 27 April 2026</div>
+            <div>Pusat Unduhan Dokumen</div>
+        </div>
+
+        <header>
+            <div class="logo-container">
+                <img src="logo-sekar.webp" alt="Logo SEKAR YGI" class="logo-img">
+                <div class="logo-text">
+                    <h1>SEKAR YGI</h1>
+                    <p>Serikat Karyawan Yudhistira Ghalia Indonesia</p>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">BERANDA</a></li>
+            <li><a href="profil.html">PROFIL</a></li>
+            <li><a href="pkb.html">PKB</a></li>
+            <li><a href="keanggotaan.html">KEANGGOTAAN</a></li>
+            <li><a href="berita.html">BERITA</a></li>
+            <li><a href="unduhan.html">UNDUHAN</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main class="main-content">
+            <h2>Pusat Unduhan</h2>
+            <p>Silakan unduh dokumen resmi organisasi di bawah ini. Pastikan Anda memiliki aplikasi pembaca PDF atau dokumen yang sesuai.</p>
+
+            <table class="download-table">
+                <thead>
+                    <tr>
+                        <th>Nama Dokumen</th>
+                        <th class="file-size">Info</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>Formulir Pendaftaran Anggota</strong>
+                            <span class="file-info">Wajib bagi calon anggota baru</span>
+                        </td>
+                        <td class="file-size">PDF (124 KB)</td>
+                        <td><a href="#" class="btn-download">UNDUH</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Draf PKB 2024 - 2026</strong>
+                            <span class="file-info">Versi Update Februari 2026</span>
+                        </td>
+                        <td class="file-size">PDF (2.1 MB)</td>
+                        <td><a href="#" class="btn-download">UNDUH</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>AD / ART SEKAR YGI</strong>
+                            <span class="file-info">Anggaran Dasar Organisasi</span>
+                        </td>
+                        <td class="file-size">PDF (850 KB)</td>
+                        <td><a href="#" class="btn-download">UNDUH</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Surat Edaran Iuran 2026</strong>
+                            <span class="file-info">Ketentuan Potongan Gaji Terbaru</span>
+                        </td>
+                        <td class="file-size">PDF (310 KB)</td>
+                        <td><a href="#" class="btn-download">UNDUH</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <aside>
+            <div class="sidebar-news-box">
+                <h3>Berita Terbaru</h3>
+                <img src="may-day-01.webp" alt="Pamflet May Day" class="news-thumb">
+                <a href="berita.html" style="color: #003366; text-decoration: none; font-weight: bold; font-size: 0.95rem;">Solidarity Touring: May Day 2026 &raquo;</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2026 Serikat Karyawan Yudhistira Ghalia Indonesia.
+        </div>
+    </footer>
+
+</body>
+</html>

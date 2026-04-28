@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update PKB | SEKAR YGI</title>
+    <style>
+        /* CSS Global */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
+
+        /* KELOMPOK STICKY (Top Bar + Header) */
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .top-bar { 
+            background-color: #002244; 
+            color: #fff; 
+            padding: 8px 10%; 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 0.8rem; 
+        }
+
+        header { 
+            background-color: #fff; 
+            padding: 20px 10%; 
+            display: flex; 
+            align-items: center; 
+            border-bottom: 5px solid #cc0000; 
+        }
+
+        .logo-container { display: flex; align-items: center; }
+        .logo-img { height: 90px; width: auto; margin-right: 25px; }
+        .logo-text h1 { font-size: 2.6rem; color: #003366; line-height: 1; letter-spacing: 2px; margin-bottom: 5px; font-weight: 800; }
+        .logo-text p { font-size: 1rem; color: #444; font-weight: 500; border-top: 2px solid #cc0000; padding-top: 5px; text-transform: uppercase; }
+
+        /* Navigasi - TIDAK STICKY */
+        nav { 
+            background-color: #003366; 
+            padding: 0 10%; 
+            position: relative;
+            z-index: 1000; 
+        }
+        nav ul { list-style: none; display: flex; }
+        nav ul li a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
+        nav ul li a:hover { background-color: #cc0000; }
+
+        /* Layout Konten PKB */
+        .container { padding: 40px 10%; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .main-content { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        h2 { color: #003366; margin-bottom: 20px; font-size: 2rem; border-left: 5px solid #cc0000; padding-left: 15px; }
+        
+        /* Status Box */
+        .status-box { 
+            background-color: #fff3f3; 
+            border: 1px solid #ffcccc; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin-bottom: 30px; 
+        }
+        .status-box h4 { color: #cc0000; margin-bottom: 10px; display: flex; align-items: center; }
+        
+        .pkb-point { 
+            margin-top: 15px; 
+            padding: 15px; 
+            border-bottom: 1px solid #eee; 
+            transition: background 0.3s;
+        }
+        .pkb-point:hover { background: #fcfcfc; }
+        .pkb-point strong { color: #003366; display: block; margin-bottom: 5px; font-size: 1.1rem; }
+
+        /* Sidebar Style */
+        .sidebar-news-box { background: #fff; padding: 20px; border-radius: 8px; border-left: 6px solid #cc0000; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .news-thumb { width: 100%; border-radius: 4px; margin-bottom: 10px; border: 1px solid #ddd; }
+        .sidebar-links { background: #fff; padding: 25px; border-radius: 8px; border-top: 6px solid #003366; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
+        /* Footer */
+        footer { background-color: #001a33; color: #bdc3c7; padding: 40px 10% 20px 10%; margin-top: 50px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #34495e; font-size: 0.8rem; }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .top-bar { flex-direction: column; text-align: center; padding: 5px; font-size: 0.7rem; }
+            header { padding: 15px 5%; flex-direction: column; text-align: center; }
+            .logo-img { margin-right: 0; margin-bottom: 10px; height: 60px; }
+            .logo-text h1 { font-size: 1.6rem; }
+            .logo-text p { font-size: 0.75rem; border-top: 1px solid #cc0000; }
+            
+            nav ul { flex-direction: column; }
+            nav ul li a { text-align: center; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .container { grid-template-columns: 1fr; padding: 20px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sticky-wrapper">
+        <div class="top-bar">
+            <div>Senin, 27 April 2026</div>
+            <div>Perjanjian Kerja Bersama (PKB)</div>
+        </div>
+
+        <header>
+            <div class="logo-container">
+                <img src="logo-sekar.webp" alt="Logo SEKAR YGI" class="logo-img">
+                <div class="logo-text">
+                    <h1>SEKAR YGI</h1>
+                    <p>Serikat Karyawan Yudhistira Ghalia Indonesia</p>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">BERANDA</a></li>
+            <li><a href="profil.html">PROFIL</a></li>
+            <li><a href="pkb.html">PKB</a></li>
+            <li><a href="keanggotaan.html">KEANGGOTAAN</a></li>
+            <li><a href="berita.html">BERITA</a></li>
+            <li><a href="unduhan.html">UNDUHAN</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main class="main-content">
+            <h2>Perjanjian Kerja Bersama</h2>
+            <p>PKB merupakan pijakan hukum tertinggi antara karyawan dan manajemen. SEKAR YGI berkomitmen memastikan setiap butir kesepakatan dijalankan demi kebaikan bersama.</p>
+
+            <div class="status-box">
+                <h4>⚠️ Progres Administrasi</h4>
+                <p>Saat ini draf PKB sedang dalam tahap <strong>sinkronisasi alamat kantor pusat</strong> (Pramuka) di Disnaker Bogor. Hal ini krusial agar pencatatan serikat kita di Kemenaker RI memiliki legalitas yang sempurna secara nasional.</p>
+            </div>
+
+            <h3>Update Poin Kesepakatan:</h3>
+            
+            <div class="pkb-point">
+                <strong>Penyesuaian Jadwal Gaji</strong>
+                <p>Mulai tahun 2026, kenaikan gaji tahunan efektif dilakukan pada bulan <strong>Januari</strong> (sebelumnya September). Hal ini bertujuan menyelaraskan dengan siklus anggaran tahunan perusahaan.</p>
+            </div>
+
+            <div class="pkb-point">
+                <strong>Kesejahteraan Driver</strong>
+                <p>Serikat sedang melakukan perundingan intensif agar uang makan hari libur bagi driver dihitung sebagai <strong>upah lembur resmi</strong> sesuai dengan Undang-Undang Cipta Kerja yang berlaku.</p>
+            </div>
+
+            <div class="pkb-point">
+                <strong>Perlindungan Kesehatan</strong>
+                <p>Memastikan iuran BPJS Kesehatan dan Ketenagakerjaan dibayarkan tepat waktu dengan manfaat jaminan yang sesuai kelas kepangkatan masing-masing karyawan.</p>
+            </div>
+        </main>
+
+        <aside>
+            <div class="sidebar-news-box">
+                <h3>Berita Terbaru</h3>
+                <img src="may-day-01.webp" alt="Pamflet May Day" class="news-thumb">
+                <a href="berita.html" style="color: #003366; text-decoration: none; font-weight: bold; font-size: 0.95rem;">Solidarity Touring: May Day 2026 &raquo;</a>
+            </div>
+
+            <div class="sidebar-links">
+                <h3 style="color: #003366; margin-bottom: 15px; font-size: 1.1rem;">Aksi PKB</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 12px;"><a href="unduhan.html" style="color: #cc0000; text-decoration: none; font-weight: bold; font-size: 0.9rem;">&raquo; Download Draf PKB</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2026 Serikat Karyawan Yudhistira Ghalia Indonesia.
+        </div>
+    </footer>
+
+</body>
+</html>
