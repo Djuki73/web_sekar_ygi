@@ -17,7 +17,6 @@
       transform: translateY(-6px) scale(1.01);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
     }
-    /* Sembunyikan scrollbar untuk tampilan bersih */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -62,11 +61,11 @@
           </div>
         </div>
 
-        <!-- CTA Button Desktop -->
+        <!-- CTA Button Desktop (PEMANGGIL FORMULIR) -->
         <div class="hidden md:block">
-          <a href="#join" class="bg-[#ccff00] hover:bg-[#b3e600] text-slate-900 font-bold px-5 py-2.5 rounded-full text-xs tracking-wider uppercase transition-all shadow-lg hover:shadow-xl">
+          <button onclick="openFormModal()" class="bg-[#ccff00] hover:bg-[#b3e600] text-slate-900 font-bold px-5 py-2.5 rounded-full text-xs tracking-wider uppercase transition-all shadow-lg hover:shadow-xl">
             GABUNG SEKAR
-          </a>
+          </button>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -80,14 +79,14 @@
         <a href="#home" class="hover:bg-white/10 px-3 py-2 rounded-lg text-sm">HOME</a>
         <a href="#kegiatan" class="hover:bg-white/10 px-3 py-2 rounded-lg text-sm">KEGIATAN</a>
         <a href="#tentang" class="hover:bg-white/10 px-3 py-2 rounded-lg text-sm">TENTANG KAMI</a>
-        <a href="#join" class="bg-[#ccff00] text-slate-900 font-bold px-4 py-2.5 rounded-full text-center text-xs uppercase">GABUNG SEKAR</a>
+        <button onclick="openFormModal()" class="bg-[#ccff00] text-slate-900 font-bold px-4 py-2.5 rounded-full text-center text-xs uppercase w-full">GABUNG SEKAR</button>
       </div>
     </header>
 
     <!-- MAIN CONTENT / HERO HEADER -->
     <main class="relative z-10 max-w-5xl mx-auto px-4 text-center mt-2 mb-6">
       
-      <!-- AREA VIDEO LOGO (Fit pas & Responsif) -->
+      <!-- AREA VIDEO LOGO -->
       <div class="flex justify-center mb-5">
         <div class="relative w-[280px] sm:w-[380px] md:w-[480px] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/40 bg-white/10 backdrop-blur-md p-1.5 inline-block">
           <video class="w-full h-auto block rounded-xl" autoplay loop muted playsinline>
@@ -113,16 +112,16 @@
         <a href="#kegiatan" class="bg-white/20 hover:bg-white/30 text-white font-medium px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs tracking-wider uppercase backdrop-blur-md transition-all border border-white/30">
           LIHAT DEMO
         </a>
-        <a href="#join" class="bg-[#ccff00] hover:bg-[#b3e600] text-slate-900 font-bold px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs tracking-wider uppercase flex items-center gap-2 shadow-lg hover:shadow-xl transition-all">
+        <button onclick="openFormModal()" class="bg-[#ccff00] hover:bg-[#b3e600] text-slate-900 font-bold px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs tracking-wider uppercase flex items-center gap-2 shadow-lg hover:shadow-xl transition-all">
           MULAI BERSAMA <i class="fas fa-arrow-up-right-from-square text-xs"></i>
-        </a>
+        </button>
       </div>
     </main>
 
     <!-- CAROUSEL KARTU KEGIATAN RESPONSIF -->
     <div class="relative z-10 w-full max-w-7xl mx-auto px-4 mt-2">
       
-      <!-- Header Carousel & Navigasi Panah -->
+      <!-- Header Carousel -->
       <div class="flex justify-between items-center px-2 mb-3 text-white">
         <div>
           <h2 class="text-base sm:text-lg font-bold">Kegiatan & Program SEKAR</h2>
@@ -138,11 +137,11 @@
         </div>
       </div>
 
-      <!-- Container Card Horizontal Scroll (Kartu Responsif sesuai Ukuran Layar) -->
+      <!-- Container Card Horizontal Scroll -->
       <div id="cardContainer" class="flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth snap-x snap-mandatory">
 
         <!-- KARTU 1: Rapat Kerja -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Rapat Kerja Tahunan', 'Rapat evaluasi tahunan dan penyusunan strategi program kerja SEKAR YGI untuk kesejahteraan anggota.')">
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Rapat Kerja Tahunan', 'Rapat evaluasi tahunan dan penyusunan strategi program kerja SEKAR YGI untuk kesejahteraan anggota.')">
           <div>
             <div class="bg-blue-100 text-blue-600 rounded-xl p-2.5 inline-block mb-2">
               <i class="fas fa-briefcase text-lg"></i>
@@ -158,7 +157,7 @@
         </div>
 
         <!-- KARTU 2: Kesejahteraan -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-slate-900 text-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Program Kesejahteraan', 'Layanan advokasi, bantuan sosial, serta program simpan pinjam anggota SEKAR YGI.')">
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-slate-900 text-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Program Kesejahteraan', 'Layanan advokasi, bantuan sosial, serta program simpan pinjam anggota SEKAR YGI.')">
           <div>
             <div class="bg-lime-400 text-slate-900 rounded-xl p-2.5 inline-block mb-2">
               <i class="fas fa-hand-holding-heart text-lg"></i>
@@ -174,7 +173,7 @@
         </div>
 
         <!-- KARTU 3: Workshop -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Workshop Skill Upgrading', 'Pelatihan dan seminar rutin peningkatan kemahiran teknis serta kepemimpinan anggota.')">
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Workshop Skill Upgrading', 'Pelatihan dan seminar rutin peningkatan kemahiran teknis serta kepemimpinan anggota.')">
           <div>
             <div class="bg-amber-100 text-amber-600 rounded-xl p-2.5 inline-block mb-2">
               <i class="fas fa-graduation-cap text-lg"></i>
@@ -190,7 +189,7 @@
         </div>
 
         <!-- KARTU 4: Bakti Sosial -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Bakti Sosial & CSR', 'Kegiatan kepedulian masyarakat sekitar melalui penyerahan bantuan dan kebersihan lingkungan.')">
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Bakti Sosial & CSR', 'Kegiatan kepedulian masyarakat sekitar melalui penyerahan bantuan dan kebersihan lingkungan.')">
           <div>
             <div class="bg-emerald-100 text-emerald-600 rounded-xl p-2.5 inline-block mb-2">
               <i class="fas fa-heart text-lg"></i>
@@ -206,7 +205,7 @@
         </div>
 
         <!-- KARTU 5: Family Gathering -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Family Gathering', 'Acara keakraban tahunan bagi seluruh karyawan beserta keluarga.')">
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Family Gathering', 'Acara keakraban tahunan bagi seluruh karyawan beserta keluarga.')">
           <div>
             <div class="bg-purple-100 text-purple-600 rounded-xl p-2.5 inline-block mb-2">
               <i class="fas fa-users text-lg"></i>
@@ -222,7 +221,7 @@
         </div>
 
         <!-- KARTU 6: Donor Darah -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Donor Darah Rutin', 'Kegiatan kemanusiaan donor darah bekerja sama dengan PMI.')">
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Donor Darah Rutin', 'Kegiatan kemanusiaan donor darah bekerja sama dengan PMI.')">
           <div>
             <div class="bg-red-100 text-red-600 rounded-xl p-2.5 inline-block mb-2">
               <i class="fas fa-notes-medical text-lg"></i>
@@ -238,7 +237,7 @@
         </div>
 
         <!-- KARTU 7: Olahraga & Seni -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Pekan Olahraga & Seni', 'Kompetisi persahabatan antar divisi dalam bidang olahraga dan kesenian.')">
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Pekan Olahraga & Seni', 'Kompetisi persahabatan antar divisi dalam bidang olahraga dan kesenian.')">
           <div>
             <div class="bg-orange-100 text-orange-600 rounded-xl p-2.5 inline-block mb-2">
               <i class="fas fa-trophy text-lg"></i>
@@ -271,16 +270,164 @@
 
   </section>
 
-  <!-- MODAL POPUP KEGIATAN -->
+  <!-- MODAL FORMULIR PENDAFTARAN SEKAR YGI (DIGITAL FORM) -->
+  <div id="formModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-md hidden items-center justify-center z-50 p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl relative overflow-hidden my-auto max-h-[92vh] flex flex-col animate-fade-in">
+      
+      <!-- Header Modal -->
+      <div class="bg-slate-900 text-white p-5 sm:p-6 flex justify-between items-start border-b border-slate-800 relative">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="bg-blue-500/20 text-blue-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-blue-500/30">Pendaftaran Online</span>
+            <span class="text-slate-400 text-[11px]">Disnaker Kota Bogor No: 08/OP.SP.PPMI/3.34/08/VIII/2001</span>
+          </div>
+          <h2 class="text-lg sm:text-xl font-bold text-white">FORMULIR PENDAFTARAN ANGGOTA</h2>
+          <p class="text-xs text-slate-300">Serikat Karyawan PT Yudhistira Ghalia Indonesia (SEKAR YGI)</p>
+        </div>
+        <button onclick="closeFormModal()" class="text-slate-400 hover:text-white text-xl p-1 bg-white/10 rounded-full w-8 h-8 flex items-center justify-center transition">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Isian Form Scrollable -->
+      <form id="sekarForm" onsubmit="submitForm(event)" class="p-5 sm:p-6 overflow-y-auto space-y-5 text-left text-xs sm:text-sm">
+        
+        <!-- BAGIAN 1: IDENTITAS DIRI -->
+        <div>
+          <h3 class="font-bold text-slate-800 text-sm sm:text-base border-b pb-1.5 mb-3 flex items-center gap-2 text-blue-600">
+            <i class="fas fa-user-circle"></i> 1. IDENTITAS DIRI
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            
+            <div class="sm:col-span-2">
+              <label class="block text-slate-700 font-semibold mb-1">Nama Lengkap *</label>
+              <input type="text" required placeholder="Masukkan nama sesuai KTP" class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">Tempat / Tgl. Lahir *</label>
+              <input type="text" required placeholder="Bogor, 12 Januari 1990" class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">Jenis Kelamin *</label>
+              <select required class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800 bg-white">
+                <option value="">-- Pilih Jenis Kelamin --</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">Agama *</label>
+              <input type="text" required placeholder="Islam, Kristen, dll." class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">Status Perkawinan *</label>
+              <select required class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800 bg-white">
+                <option value="">-- Pilih Status --</option>
+                <option value="Menikah">Menikah</option>
+                <option value="Belum Menikah">Belum Menikah</option>
+                <option value="Duda / Janda">Duda / Janda</option>
+              </select>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="block text-slate-700 font-semibold mb-1">Alamat Rumah (KTP) *</label>
+              <textarea required rows="2" placeholder="Masukkan alamat lengkap rumah" class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">No. HP / WhatsApp *</label>
+              <input type="tel" required placeholder="0812xxxxxxx" class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">Email Karyawan *</label>
+              <input type="email" required placeholder="nama@yudhistira.co.id" class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800">
+            </div>
+
+          </div>
+        </div>
+
+        <!-- BAGIAN 2: DATA KEPEKERJAAN -->
+        <div>
+          <h3 class="font-bold text-slate-800 text-sm sm:text-base border-b pb-1.5 mb-3 flex items-center gap-2 text-blue-600">
+            <i class="fas fa-id-card"></i> 2. DATA KEPEKERJAAN
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">NIK / NIP Karyawan *</label>
+              <input type="text" required placeholder="Nomor Induk Karyawan" class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">Departemen / Bagian *</label>
+              <input type="text" required placeholder="Contoh: Digital Publishing / IT / HRD" class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">Tanggal Masuk Kerja *</label>
+              <input type="date" required class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800 bg-white">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 font-semibold mb-1">Status Hubungan Kerja *</label>
+              <select required class="w-full px-3 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-slate-800 bg-white">
+                <option value="">-- Pilih Status Kerja --</option>
+                <option value="Pegawai Tetap (PKWTT)">Pegawai Tetap (PKWTT)</option>
+                <option value="Kontrak (PKWT)">Kontrak (PKWT)</option>
+                <option value="Pekerja Harian Lepas">Pekerja Harian Lepas</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- BAGIAN 3: PERNYATAAN KEANGGOTAAN -->
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <h3 class="font-bold text-slate-800 text-xs sm:text-sm mb-2 flex items-center gap-2">
+            <i class="fas fa-file-contract text-blue-600"></i> PERNYATAAN KEANGGOTAAN
+          </h3>
+          <p class="text-[11px] sm:text-xs text-slate-600 leading-relaxed mb-3">
+            Dengan ini saya mendaftarkan diri secara sukarela menjadi Anggota Serikat Karyawan PT Yudhistira Ghalia Indonesia (SEKAR YGI) sesuai UU No. 21/2000, UU No. 13/2003 jo. UU No. 6/2023, serta PP No. 35/2021. Saya bersedia mematuhi AD/ART, Perjanjian Kerja Bersama (PKB), menjaga nama baik organisasi, serta melaksanakan hak dan kewajiban anggota dengan penuh tanggung jawab.
+          </p>
+
+          <label class="flex items-start gap-2.5 cursor-pointer">
+            <input type="checkbox" required class="mt-0.5 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+            <span class="text-xs font-semibold text-slate-800">
+              Saya menyetujui pernyataan keanggotaan di atas dan menyatakan data ini dibuat dengan sebenar-benarnya tanpa paksaan[cite: 4].
+            </span>
+          </label>
+        </div>
+
+        <!-- Tombol Kirim Form -->
+        <div class="flex justify-end gap-3 pt-2">
+          <button type="button" onclick="closeFormModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-semibold text-xs transition">
+            Batal
+          </button>
+          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl font-bold text-xs tracking-wider uppercase transition shadow-lg hover:shadow-blue-500/30 flex items-center gap-2">
+            <i class="fas fa-paper-plane"></i> Kirim Pendaftaran
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- MODAL DETAIL KEGIATAN -->
   <div id="detailModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-50 px-4">
     <div class="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl p-1">
+      <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl p-1">
         <i class="fas fa-times"></i>
       </button>
       <h3 id="modalTitle" class="text-lg sm:text-xl font-bold text-slate-800 mb-2"></h3>
       <p id="modalDesc" class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed"></p>
       <div class="flex justify-end">
-        <button onclick="closeModal()" class="bg-blue-600 text-white font-medium px-4 py-2 rounded-lg text-xs hover:bg-blue-700 transition">
+        <button onclick="closeDetailModal()" class="bg-blue-600 text-white font-medium px-4 py-2 rounded-lg text-xs hover:bg-blue-700 transition">
           Tutup
         </button>
       </div>
@@ -297,7 +444,7 @@
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Carousel Scroll Logic (Disesuaikan dengan lebar kartu)
+    // Carousel Scroll Logic
     const container = document.getElementById('cardContainer');
     const slideLeft = document.getElementById('slideLeft');
     const slideRight = document.getElementById('slideRight');
@@ -312,15 +459,33 @@
       container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
 
-    // Modal Logic
-    function openModal(title, description) {
+    // Modal Form Pendaftaran Logic
+    function openFormModal() {
+      document.getElementById('formModal').classList.remove('hidden');
+      document.getElementById('formModal').classList.add('flex');
+    }
+
+    function closeFormModal() {
+      document.getElementById('formModal').classList.add('hidden');
+      document.getElementById('formModal').classList.remove('flex');
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      alert('Terima kasih! Pendaftaran pendaftaran anggota SEKAR YGI Anda telah berhasil dikirim.');
+      closeFormModal();
+      document.getElementById('sekarForm').reset();
+    }
+
+    // Modal Detail Kegiatan Logic
+    function openDetailModal(title, description) {
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalDesc').innerText = description;
       document.getElementById('detailModal').classList.remove('hidden');
       document.getElementById('detailModal').classList.add('flex');
     }
 
-    function closeModal() {
+    function closeDetailModal() {
       document.getElementById('detailModal').classList.add('hidden');
       document.getElementById('detailModal').classList.remove('flex');
     }
