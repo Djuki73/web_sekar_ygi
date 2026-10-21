@@ -1,189 +1,330 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEKAR YGI | Premium Portal</title>
-    <style>
-        /* CSS Global */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
-        
-        body { 
-            background: #001a33; /* Warna dasar gelap agar efek kaca terlihat */
-            color: #fff;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* --- 1. PARALLAX BACKGROUND LAYER --- */
-        .parallax-bg {
-            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop');
-            height: 100vh;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: fixed;
-            width: 100%;
-            z-index: -1;
-            filter: brightness(0.5); /* Gelapkan sedikit agar teks aman */
-        }
-
-        /* --- 2. GLASSMORPHISM HEADER --- */
-        .sticky-wrapper {
-            position: sticky;
-            top: 0;
-            z-index: 1100;
-            /* Efek Kaca Buram */
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        header { padding: 15px 10%; display: flex; align-items: center; justify-content: space-between; }
-        .logo-container { display: flex; align-items: center; }
-        .logo-img { height: 50px; margin-right: 15px; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
-        .logo-text h1 { font-size: 1.5rem; letter-spacing: 2px; font-weight: 800; color: #fff; }
-
-        nav ul { list-style: none; display: flex; }
-        nav ul li a { padding: 10px 20px; color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
-        nav ul li a:hover { color: #cc0000; }
-
-        /* Hero Text */
-        .hero-section {
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 10%;
-        }
-        .hero-section h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 10px; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .hero-section p { font-size: 1.2rem; background: #cc0000; padding: 5px 25px; border-radius: 50px; font-weight: bold; }
-
-        /* --- 3. BENTO GRID WITH GLASSMORPHISM --- */
-        .bento-container {
-            padding: 40px 10% 80px 10%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .bento-item {
-            /* Efek Kaca untuk Tiap Kotak */
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 30px;
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* Micro-interactions (Point 3) */
-        .bento-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(204, 0, 0, 0.5);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .bento-main { grid-column: span 2; grid-row: span 2; background: rgba(204, 0, 0, 0.2); border: 1px solid rgba(204, 0, 0, 0.3); }
-        .bento-wide { grid-column: span 2; }
-
-        .icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
-        .bento-item h3 { font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; }
-        .bento-item p { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
-
-        footer { padding: 40px; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
-
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .bento-container { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .parallax-bg { background-attachment: scroll; } /* Matikan fixed di HP agar enteng */
-            header { flex-direction: column; padding: 20px; }
-            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
-            .hero-section h2 { font-size: 2rem; }
-            .bento-container { grid-template-columns: 1fr; padding: 20px 5%; }
-            .bento-main, .bento-wide { grid-column: span 1; grid-row: span 1; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEKAR YGI - Serikat Karyawan Yudhistira Ghalia Indonesia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    .sky-bg {
+      background: linear-gradient(180deg, #0277bd 0%, #00a1e9 50%, #81d4fa 100%);
+    }
+    .card-3d {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .card-3d:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    }
+    /* Sembunyikan scrollbar untuk tampilan bersih */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-800 font-sans antialiased">
 
-    <div class="parallax-bg"></div>
+  <!-- STAGE BIRU (HERO SECTION) -->
+  <section class="sky-bg min-h-screen relative overflow-hidden flex flex-col justify-between pb-8">
+    
+    <!-- Cloud Overlay Decoration -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/30 to-transparent pointer-events-none"></div>
 
-    <div class="sticky-wrapper">
-        <header>
-            <div class="logo-container">
-                <img src="logo-sekar.webp" alt="Logo" class="logo-img">
-                <div class="logo-text"><h1>SEKAR YGI</h1></div>
+    <!-- NAVBAR / HEADER -->
+    <header class="relative z-20 px-4 md:px-8 py-4 max-w-7xl mx-auto w-full">
+      <nav class="flex items-center justify-between">
+        
+        <!-- Logo Brand & Gambar -->
+        <div class="flex items-center space-x-3">
+          <img src="logo SEKAR baru.png" alt="Logo SEKAR YGI" class="h-9 md:h-10 w-auto object-contain bg-white/20 p-1 rounded-lg backdrop-blur-md" onerror="this.src='https://via.placeholder.com/40?text=SEKAR'">
+          <span class="text-lg md:text-xl font-bold text-white tracking-wide drop-shadow-md">SEKAR YGI</span>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8 text-white/90 font-medium text-sm tracking-wider uppercase">
+          <a href="#home" class="hover:text-white transition-colors">HOME</a>
+          <a href="#kegiatan" class="hover:text-white transition-colors">KEGIATAN</a>
+          <a href="#tentang" class="hover:text-white transition-colors">TENTANG KAMI</a>
+          <div class="relative group cursor-pointer py-2">
+            <span class="hover:text-white flex items-center gap-1">
+              LAINNYA <i class="fas text-xs fa-chevron-down"></i>
+            </span>
+            <div class="absolute top-full left-0 hidden group-hover:block bg-white text-slate-800 rounded-lg shadow-xl py-2 w-48 z-50">
+              <a href="#" class="block px-4 py-2 hover:bg-slate-100 text-sm">Pengumuman</a>
+              <a href="#" class="block px-4 py-2 hover:bg-slate-100 text-sm">Keanggotaan</a>
+              <a href="#" class="block px-4 py-2 hover:bg-slate-100 text-sm">Galeri Foto</a>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="profil.html">Profil</a></li>
-                    <li><a href="pkb.html">PKB</a></li>
-                    <li><a href="berita.html">Berita</a></li>
-                </ul>
-            </nav>
-        </header>
+          </div>
+        </div>
+
+        <!-- CTA Button Desktop -->
+        <div class="hidden md:block">
+          <a href="#join" class="bg-[#ccff00] hover:bg-[#b3e600] text-slate-900 font-bold px-5 py-2.5 rounded-full text-xs tracking-wider uppercase transition-all shadow-lg hover:shadow-xl">
+            GABUNG SEKAR
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none p-2">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden md:hidden mt-3 bg-white/10 backdrop-blur-md rounded-2xl p-4 text-white flex flex-col space-y-3">
+        <a href="#home" class="hover:bg-white/10 px-3 py-2 rounded-lg text-sm">HOME</a>
+        <a href="#kegiatan" class="hover:bg-white/10 px-3 py-2 rounded-lg text-sm">KEGIATAN</a>
+        <a href="#tentang" class="hover:bg-white/10 px-3 py-2 rounded-lg text-sm">TENTANG KAMI</a>
+        <a href="#join" class="bg-[#ccff00] text-slate-900 font-bold px-4 py-2.5 rounded-full text-center text-xs uppercase">GABUNG SEKAR</a>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT / HERO HEADER -->
+    <main class="relative z-10 max-w-5xl mx-auto px-4 text-center mt-2 mb-6">
+      
+      <!-- AREA VIDEO LOGO (Fit pas & Responsif) -->
+      <div class="flex justify-center mb-5">
+        <div class="relative w-[280px] sm:w-[380px] md:w-[480px] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/40 bg-white/10 backdrop-blur-md p-1.5 inline-block">
+          <video class="w-full h-auto block rounded-xl" autoplay loop muted playsinline>
+            <source src="logo sekar.mp4" type="video/mp4">
+            Browser Anda tidak mendukung pemutaran video.
+          </video>
+        </div>
+      </div>
+
+      <!-- JUDUL UTAMA -->
+      <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md">
+        Membangun Masa Depan Bersama <br class="hidden sm:block"/>
+        <span class="text-[#ccff00]">SEKAR YGI</span> & Strategi Kolaborasi
+      </h1>
+
+      <!-- SUBJUDUL -->
+      <p class="mt-3 text-white/90 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed">
+        Kami membantu memperkuat solidaritas, kesejahteraan anggota, dan efisiensi organisasi melalui program kerja yang inovatif dan terstruktur.
+      </p>
+
+      <!-- TOMBOL ACTION -->
+      <div class="mt-5 flex flex-wrap justify-center gap-3">
+        <a href="#kegiatan" class="bg-white/20 hover:bg-white/30 text-white font-medium px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs tracking-wider uppercase backdrop-blur-md transition-all border border-white/30">
+          LIHAT DEMO
+        </a>
+        <a href="#join" class="bg-[#ccff00] hover:bg-[#b3e600] text-slate-900 font-bold px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs tracking-wider uppercase flex items-center gap-2 shadow-lg hover:shadow-xl transition-all">
+          MULAI BERSAMA <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+      </div>
+    </main>
+
+    <!-- CAROUSEL KARTU KEGIATAN RESPONSIF -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 mt-2">
+      
+      <!-- Header Carousel & Navigasi Panah -->
+      <div class="flex justify-between items-center px-2 mb-3 text-white">
+        <div>
+          <h2 class="text-base sm:text-lg font-bold">Kegiatan & Program SEKAR</h2>
+          <p class="text-[11px] sm:text-xs text-white/80">Geser untuk memilih semua kegiatan</p>
+        </div>
+        <div class="flex space-x-2">
+          <button id="slideLeft" class="bg-white/20 hover:bg-white/40 text-white p-2 sm:p-2.5 rounded-full backdrop-blur-md transition" aria-label="Geser Kiri">
+            <i class="fas fa-chevron-left text-xs sm:text-sm"></i>
+          </button>
+          <button id="slideRight" class="bg-white/20 hover:bg-white/40 text-white p-2 sm:p-2.5 rounded-full backdrop-blur-md transition" aria-label="Geser Kanan">
+            <i class="fas fa-chevron-right text-xs sm:text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Container Card Horizontal Scroll (Kartu Responsif sesuai Ukuran Layar) -->
+      <div id="cardContainer" class="flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth snap-x snap-mandatory">
+
+        <!-- KARTU 1: Rapat Kerja -->
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Rapat Kerja Tahunan', 'Rapat evaluasi tahunan dan penyusunan strategi program kerja SEKAR YGI untuk kesejahteraan anggota.')">
+          <div>
+            <div class="bg-blue-100 text-blue-600 rounded-xl p-2.5 inline-block mb-2">
+              <i class="fas fa-briefcase text-lg"></i>
+            </div>
+            <span class="text-[10px] font-bold text-blue-500 uppercase tracking-wider block mb-1">Organisasi</span>
+            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Rapat Kerja Tahunan</h3>
+            <p class="text-xs text-slate-500 line-clamp-2">Penyusunan rencana kerja strategis dan evaluasi kinerja organisasi SEKAR YGI.</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-blue-600">
+            <span>Pelajari Detail</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- KARTU 2: Kesejahteraan -->
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-slate-900 text-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Program Kesejahteraan', 'Layanan advokasi, bantuan sosial, serta program simpan pinjam anggota SEKAR YGI.')">
+          <div>
+            <div class="bg-lime-400 text-slate-900 rounded-xl p-2.5 inline-block mb-2">
+              <i class="fas fa-hand-holding-heart text-lg"></i>
+            </div>
+            <span class="text-[10px] font-bold text-lime-400 uppercase tracking-wider block mb-1">Advokasi</span>
+            <h3 class="font-bold text-white text-sm sm:text-base mb-1">Program Kesejahteraan</h3>
+            <p class="text-xs text-slate-400 line-clamp-2">Layanan advokasi, konsultasi hak pekerja, dan pengelolaan dana bantuan sosial.</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-800 flex justify-between items-center text-xs font-semibold text-lime-400">
+            <span>Pelajari Detail</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- KARTU 3: Workshop -->
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Workshop Skill Upgrading', 'Pelatihan dan seminar rutin peningkatan kemahiran teknis serta kepemimpinan anggota.')">
+          <div>
+            <div class="bg-amber-100 text-amber-600 rounded-xl p-2.5 inline-block mb-2">
+              <i class="fas fa-graduation-cap text-lg"></i>
+            </div>
+            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider block mb-1">Edukasi</span>
+            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Workshop & Skill Up</h3>
+            <p class="text-xs text-slate-500 line-clamp-2">Pelatihan kepemimpinan dan peningkatan keahlian profesional untuk seluruh anggota.</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-amber-600">
+            <span>Pelajari Detail</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- KARTU 4: Bakti Sosial -->
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Bakti Sosial & CSR', 'Kegiatan kepedulian masyarakat sekitar melalui penyerahan bantuan dan kebersihan lingkungan.')">
+          <div>
+            <div class="bg-emerald-100 text-emerald-600 rounded-xl p-2.5 inline-block mb-2">
+              <i class="fas fa-heart text-lg"></i>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-wider block mb-1">Sosial</span>
+            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Bakti Sosial & CSR</h3>
+            <p class="text-xs text-slate-500 line-clamp-2">Program peduli sesama melalui santunan, bantuan bencana, dan bakti lingkungan.</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-emerald-600">
+            <span>Pelajari Detail</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- KARTU 5: Family Gathering -->
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Family Gathering', 'Acara keakraban tahunan bagi seluruh karyawan beserta keluarga.')">
+          <div>
+            <div class="bg-purple-100 text-purple-600 rounded-xl p-2.5 inline-block mb-2">
+              <i class="fas fa-users text-lg"></i>
+            </div>
+            <span class="text-[10px] font-bold text-purple-500 uppercase tracking-wider block mb-1">Keakraban</span>
+            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Family Gathering</h3>
+            <p class="text-xs text-slate-500 line-clamp-2">Ajang silaturahmi dan rekreasi bersama untuk mempererat tali persaudaraan.</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-purple-600">
+            <span>Pelajari Detail</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- KARTU 6: Donor Darah -->
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Donor Darah Rutin', 'Kegiatan kemanusiaan donor darah bekerja sama dengan PMI.')">
+          <div>
+            <div class="bg-red-100 text-red-600 rounded-xl p-2.5 inline-block mb-2">
+              <i class="fas fa-notes-medical text-lg"></i>
+            </div>
+            <span class="text-[10px] font-bold text-red-500 uppercase tracking-wider block mb-1">Kesehatan</span>
+            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Donor Darah Rutin</h3>
+            <p class="text-xs text-slate-500 line-clamp-2">Aksi donor darah berkala bekerjasama dengan PMI untuk membantu yang membutuhkan.</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-red-600">
+            <span>Pelajari Detail</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- KARTU 7: Olahraga & Seni -->
+        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openModal('Pekan Olahraga & Seni', 'Kompetisi persahabatan antar divisi dalam bidang olahraga dan kesenian.')">
+          <div>
+            <div class="bg-orange-100 text-orange-600 rounded-xl p-2.5 inline-block mb-2">
+              <i class="fas fa-trophy text-lg"></i>
+            </div>
+            <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider block mb-1">PORSENI</span>
+            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Pekan Olahraga</h3>
+            <p class="text-xs text-slate-500 line-clamp-2">Turnamen olahraga dan seni antar divisi untuk menjaga kebugaran dan semangat kebersamaan.</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-orange-600">
+            <span>Pelajari Detail</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Rating Info Bawah Carousel -->
+      <div class="text-center mt-3 text-white/80 text-[11px] sm:text-xs flex items-center justify-center gap-1">
+        <span>Dinilai <strong>4.9/5</strong> oleh 4,900+ anggota</span>
+        <div class="flex text-amber-300 ml-1">
+          <i class="fas fa-star text-[10px]"></i>
+          <i class="fas fa-star text-[10px]"></i>
+          <i class="fas fa-star text-[10px]"></i>
+          <i class="fas fa-star text-[10px]"></i>
+          <i class="fas fa-star text-[10px]"></i>
+        </div>
+      </div>
+
     </div>
 
-    <section class="hero-section">
-        <h2>SOLIDARITAS DIGITAL</h2>
-        <p>Bergerak Maju dalam Harmoni</p>
-    </section>
+  </section>
 
-    <div class="bento-container">
-        <a href="pkb.html" class="bento-item bento-main">
-            <div>
-                <span class="icon">⚖️</span>
-                <h3>Draf PKB 2026</h3>
-                <p>Kami sedang melakukan sinkronisasi alamat kantor pusat di Disnaker untuk memperkuat legalitas perundingan tahun ini. Pantau terus progresnya di sini.</p>
-            </div>
-            <div style="font-weight: bold; color: #ff4d4d; margin-top: 20px;">Cek Progres &rarr;</div>
-        </a>
-
-        <a href="keanggotaan.html" class="bento-item bento-wide">
-            <div>
-                <span class="icon">💰</span>
-                <h3>Informasi Iuran</h3>
-                <p>Iuran bulanan Rp 20.000 resmi tanpa potongan kupon makan mulai Januari 2026. Dana dikelola transparan untuk kesejahteraan bersama.</p>
-            </div>
-        </a>
-
-        <a href="berita.html" class="bento-item">
-            <div>
-                <span class="icon">🏖️</span>
-                <h3>May Day</h3>
-                <p>Touring Pelabuhan Ratu. Solidaritas di jalan!</p>
-            </div>
-        </a>
-
-        <a href="unduhan.html" class="bento-item">
-            <div>
-                <span class="icon">📄</span>
-                <h3>Dokumen</h3>
-                <p>Ambil Form & AD/ART organisasi.</p>
-            </div>
-        </a>
+  <!-- MODAL POPUP KEGIATAN -->
+  <div id="detailModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-50 px-4">
+    <div class="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl p-1">
+        <i class="fas fa-times"></i>
+      </button>
+      <h3 id="modalTitle" class="text-lg sm:text-xl font-bold text-slate-800 mb-2"></h3>
+      <p id="modalDesc" class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed"></p>
+      <div class="flex justify-end">
+        <button onclick="closeModal()" class="bg-blue-600 text-white font-medium px-4 py-2 rounded-lg text-xs hover:bg-blue-700 transition">
+          Tutup
+        </button>
+      </div>
     </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2026 Serikat Karyawan Yudhistira Ghalia Indonesia | Designed with Solidaritas</p>
-    </footer>
+  <!-- JAVASCRIPT -->
+  <script>
+    // Toggle Mobile Menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Carousel Scroll Logic (Disesuaikan dengan lebar kartu)
+    const container = document.getElementById('cardContainer');
+    const slideLeft = document.getElementById('slideLeft');
+    const slideRight = document.getElementById('slideRight');
+
+    slideLeft.addEventListener('click', () => {
+      const scrollAmount = window.innerWidth < 640 ? window.innerWidth * 0.8 : 280;
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    slideRight.addEventListener('click', () => {
+      const scrollAmount = window.innerWidth < 640 ? window.innerWidth * 0.8 : 280;
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    // Modal Logic
+    function openModal(title, description) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = description;
+      document.getElementById('detailModal').classList.remove('hidden');
+      document.getElementById('detailModal').classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('detailModal').classList.add('hidden');
+      document.getElementById('detailModal').classList.remove('flex');
+    }
+  </script>
 
 </body>
 </html>
