@@ -10,13 +10,21 @@
     .sky-bg {
       background: linear-gradient(180deg, #0277bd 0%, #00a1e9 50%, #81d4fa 100%);
     }
-    .card-3d {
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* Animasi Foto Berjalan Mulus (Infinite Loop) */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
     }
-    .card-3d:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 25s linear infinite;
     }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -69,13 +77,6 @@
           </div>
         </div>
 
-        <!-- CTA Button Desktop -->
-        <div class="hidden md:block">
-          <button onclick="openFormModal()" class="bg-[#ccff00] hover:bg-[#b3e600] text-slate-900 font-bold px-5 py-2.5 rounded-full text-xs tracking-wider uppercase transition-all shadow-lg hover:shadow-xl">
-            GABUNG SEKAR
-          </button>
-        </div>
-
         <!-- Mobile Menu Button -->
         <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none p-2">
           <i class="fas fa-bars"></i>
@@ -90,12 +91,12 @@
         <button onclick="openMenuModal('pengumuman'); closeMobileMenu();" class="text-left hover:bg-white/10 px-3 py-2 rounded-lg text-sm">PENGUMUMAN</button>
         <button onclick="openMenuModal('keanggotaan'); closeMobileMenu();" class="text-left hover:bg-white/10 px-3 py-2 rounded-lg text-sm">KEANGGOTAAN</button>
         <button onclick="openMenuModal('galeri'); closeMobileMenu();" class="text-left hover:bg-white/10 px-3 py-2 rounded-lg text-sm">GALERI FOTO</button>
-        <button onclick="openFormModal(); closeMobileMenu();" class="bg-[#ccff00] text-slate-900 font-bold px-4 py-2.5 rounded-full text-center text-xs uppercase w-full">GABUNG SEKAR</button>
+        <button onclick="openFormModal(); closeMobileMenu();" class="bg-[#ccff00] text-slate-900 font-bold px-4 py-2.5 rounded-full text-center text-xs uppercase w-full">JOIN SEKAR YGI</button>
       </div>
     </header>
 
     <!-- MAIN CONTENT / HERO HEADER -->
-    <main class="relative z-10 max-w-5xl mx-auto px-4 text-center mt-2 mb-6">
+    <main class="relative z-10 max-w-5xl mx-auto px-4 text-center mt-2 mb-4">
       
       <!-- AREA VIDEO LOGO -->
       <div class="flex justify-center mb-5">
@@ -118,149 +119,44 @@
         Kami membantu memperkuat solidaritas, kesejahteraan anggota, dan efisiensi organisasi melalui program kerja yang inovatif dan terstruktur.
       </p>
 
-      <!-- TOMBOL ACTION -->
-      <div class="mt-5 flex flex-wrap justify-center gap-3">
-        <button onclick="scrollToKegiatan()" class="bg-white/20 hover:bg-white/30 text-white font-medium px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs tracking-wider uppercase backdrop-blur-md transition-all border border-white/30">
-          LIHAT DEMO
-        </button>
-        <button onclick="openFormModal()" class="bg-[#ccff00] hover:bg-[#b3e600] text-slate-900 font-bold px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs tracking-wider uppercase flex items-center gap-2 shadow-lg hover:shadow-xl transition-all">
-          MULAI BERSAMA <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+      <!-- TOMBOL JOIN SEKAR YGI -->
+      <div class="mt-5 flex justify-center">
+        <button onclick="openFormModal()" class="bg-[#ccff00] hover:bg-[#b3e600] text-slate-900 font-extrabold px-8 py-3.5 rounded-full text-xs sm:text-sm tracking-wider uppercase flex items-center gap-2 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+          JOIN SEKAR YGI <i class="fas fa-arrow-up-right-from-square text-xs"></i>
         </button>
       </div>
     </main>
 
-    <!-- CAROUSEL KARTU KEGIATAN RESPONSIF -->
-    <div id="kegiatan-section" class="relative z-10 w-full max-w-7xl mx-auto px-4 mt-2 scroll-mt-6">
-      
-      <!-- Header Carousel -->
-      <div class="flex justify-between items-center px-2 mb-3 text-white">
-        <div>
-          <h2 class="text-base sm:text-lg font-bold">Kegiatan & Program SEKAR</h2>
-          <p class="text-[11px] sm:text-xs text-white/80">Geser untuk memilih semua kegiatan</p>
+    <!-- CAROUSEL FOTO BERJALAN DARI FOLDER LOKAL foto2 -->
+    <div id="kegiatan-section" class="relative z-10 w-full overflow-hidden py-4">
+      <div class="animate-marquee gap-4 px-2">
+        
+        <!-- Set Pertama -->
+        <div class="w-[200px] sm:w-[260px] h-[140px] sm:h-[170px] rounded-2xl overflow-hidden shadow-xl border-2 border-white/50 bg-white/20 backdrop-blur-md flex-shrink-0 cursor-pointer hover:scale-105 transition duration-300" onclick="zoomImage('foto2/Pelatihan kepemimpinan-01.webp', 'Pelatihan Kepemimpinan')">
+          <img src="foto2/Pelatihan kepemimpinan-01.webp" alt="Pelatihan Kepemimpinan" class="w-full h-full object-cover">
         </div>
-        <div class="flex space-x-2">
-          <button id="slideLeft" class="bg-white/20 hover:bg-white/40 text-white p-2 sm:p-2.5 rounded-full backdrop-blur-md transition" aria-label="Geser Kiri">
-            <i class="fas fa-chevron-left text-xs sm:text-sm"></i>
-          </button>
-          <button id="slideRight" class="bg-white/20 hover:bg-white/40 text-white p-2 sm:p-2.5 rounded-full backdrop-blur-md transition" aria-label="Geser Kanan">
-            <i class="fas fa-chevron-right text-xs sm:text-sm"></i>
-          </button>
+        <div class="w-[200px] sm:w-[260px] h-[140px] sm:h-[170px] rounded-2xl overflow-hidden shadow-xl border-2 border-white/50 bg-white/20 backdrop-blur-md flex-shrink-0 cursor-pointer hover:scale-105 transition duration-300" onclick="zoomImage('foto2/pembahasan PKB.webp', 'Pembahasan PKB')">
+          <img src="foto2/pembahasan PKB.webp" alt="Pembahasan PKB" class="w-full h-full object-cover">
         </div>
-      </div>
-
-      <!-- Container Card Horizontal Scroll -->
-      <div id="cardContainer" class="flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar py-2 px-1 scroll-smooth snap-x snap-mandatory">
-
-        <!-- KARTU 1: Rapat Kerja (Menggunakan Gambar ImgBB ycckGyb5) -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Rapat Kerja Tahunan', 'Rapat evaluasi tahunan dan penyusunan strategi program kerja SEKAR YGI untuk kesejahteraan anggota.', 'https://ibb.co.com/ycckGyb5')">
-          <div>
-            <div class="bg-blue-100 text-blue-600 rounded-xl p-2.5 inline-block mb-2">
-              <i class="fas fa-briefcase text-lg"></i>
-            </div>
-            <span class="text-[10px] font-bold text-blue-500 uppercase tracking-wider block mb-1">Organisasi</span>
-            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Rapat Kerja Tahunan</h3>
-            <p class="text-xs text-slate-500 line-clamp-2">Penyusunan rencana kerja strategis dan evaluasi kinerja organisasi SEKAR YGI.</p>
-          </div>
-          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-blue-600">
-            <span>Pelajari Detail</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
+        <div class="w-[200px] sm:w-[260px] h-[140px] sm:h-[170px] rounded-2xl overflow-hidden shadow-xl border-2 border-white/50 bg-white/20 backdrop-blur-md flex-shrink-0 cursor-pointer hover:scale-105 transition duration-300" onclick="zoomImage('foto2/sowan ke Sekda OPSI-01.webp', 'Sowan ke Sekda OPSI 01')">
+          <img src="foto2/sowan ke Sekda OPSI-01.webp" alt="Sowan ke Sekda OPSI 01" class="w-full h-full object-cover">
+        </div>
+        <div class="w-[200px] sm:w-[260px] h-[140px] sm:h-[170px] rounded-2xl overflow-hidden shadow-xl border-2 border-white/50 bg-white/20 backdrop-blur-md flex-shrink-0 cursor-pointer hover:scale-105 transition duration-300" onclick="zoomImage('foto2/sowan ke Sekda OPSI-02.webp', 'Sowan ke Sekda OPSI 02')">
+          <img src="foto2/sowan ke Sekda OPSI-02.webp" alt="Sowan ke Sekda OPSI 02" class="w-full h-full object-cover">
         </div>
 
-        <!-- KARTU 2: Kesejahteraan -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-slate-900 text-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Program Kesejahteraan', 'Layanan advokasi, bantuan sosial, serta program simpan pinjam anggota SEKAR YGI.')">
-          <div>
-            <div class="bg-lime-400 text-slate-900 rounded-xl p-2.5 inline-block mb-2">
-              <i class="fas fa-hand-holding-heart text-lg"></i>
-            </div>
-            <span class="text-[10px] font-bold text-lime-400 uppercase tracking-wider block mb-1">Advokasi</span>
-            <h3 class="font-bold text-white text-sm sm:text-base mb-1">Program Kesejahteraan</h3>
-            <p class="text-xs text-slate-400 line-clamp-2">Layanan advokasi, konsultasi hak pekerja, dan pengelolaan dana bantuan sosial.</p>
-          </div>
-          <div class="mt-3 pt-2 border-t border-slate-800 flex justify-between items-center text-xs font-semibold text-lime-400">
-            <span>Pelajari Detail</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
+        <!-- Duplikasi untuk Loop Mulus -->
+        <div class="w-[200px] sm:w-[260px] h-[140px] sm:h-[170px] rounded-2xl overflow-hidden shadow-xl border-2 border-white/50 bg-white/20 backdrop-blur-md flex-shrink-0 cursor-pointer hover:scale-105 transition duration-300" onclick="zoomImage('foto2/Pelatihan kepemimpinan-01.webp', 'Pelatihan Kepemimpinan')">
+          <img src="foto2/Pelatihan kepemimpinan-01.webp" alt="Pelatihan Kepemimpinan" class="w-full h-full object-cover">
         </div>
-
-        <!-- KARTU 3: Workshop (Menggunakan Gambar ImgBB WW9qdV12) -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Workshop Skill Upgrading', 'Pelatihan dan seminar rutin peningkatan kemahiran teknis serta kepemimpinan anggota.', 'https://ibb.co.com/WW9qdV12')">
-          <div>
-            <div class="bg-amber-100 text-amber-600 rounded-xl p-2.5 inline-block mb-2">
-              <i class="fas fa-graduation-cap text-lg"></i>
-            </div>
-            <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider block mb-1">Edukasi</span>
-            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Workshop & Skill Up</h3>
-            <p class="text-xs text-slate-500 line-clamp-2">Pelatihan kepemimpinan dan peningkatan keahlian profesional untuk seluruh anggota.</p>
-          </div>
-          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-amber-600">
-            <span>Pelajari Detail</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
+        <div class="w-[200px] sm:w-[260px] h-[140px] sm:h-[170px] rounded-2xl overflow-hidden shadow-xl border-2 border-white/50 bg-white/20 backdrop-blur-md flex-shrink-0 cursor-pointer hover:scale-105 transition duration-300" onclick="zoomImage('foto2/pembahasan PKB.webp', 'Pembahasan PKB')">
+          <img src="foto2/pembahasan PKB.webp" alt="Pembahasan PKB" class="w-full h-full object-cover">
         </div>
-
-        <!-- KARTU 4: Bakti Sosial -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Bakti Sosial & CSR', 'Kegiatan kepedulian masyarakat sekitar melalui penyerahan bantuan dan kebersihan lingkungan.')">
-          <div>
-            <div class="bg-emerald-100 text-emerald-600 rounded-xl p-2.5 inline-block mb-2">
-              <i class="fas fa-heart text-lg"></i>
-            </div>
-            <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-wider block mb-1">Sosial</span>
-            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Bakti Sosial & CSR</h3>
-            <p class="text-xs text-slate-500 line-clamp-2">Program peduli sesama melalui santunan, bantuan bencana, dan bakti lingkungan.</p>
-          </div>
-          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-emerald-600">
-            <span>Pelajari Detail</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
+        <div class="w-[200px] sm:w-[260px] h-[140px] sm:h-[170px] rounded-2xl overflow-hidden shadow-xl border-2 border-white/50 bg-white/20 backdrop-blur-md flex-shrink-0 cursor-pointer hover:scale-105 transition duration-300" onclick="zoomImage('foto2/sowan ke Sekda OPSI-01.webp', 'Sowan ke Sekda OPSI 01')">
+          <img src="foto2/sowan ke Sekda OPSI-01.webp" alt="Sowan ke Sekda OPSI 01" class="w-full h-full object-cover">
         </div>
-
-        <!-- KARTU 5: Family Gathering -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Family Gathering', 'Acara keakraban tahunan bagi seluruh karyawan beserta keluarga.')">
-          <div>
-            <div class="bg-purple-100 text-purple-600 rounded-xl p-2.5 inline-block mb-2">
-              <i class="fas fa-users text-lg"></i>
-            </div>
-            <span class="text-[10px] font-bold text-purple-500 uppercase tracking-wider block mb-1">Keakraban</span>
-            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Family Gathering</h3>
-            <p class="text-xs text-slate-500 line-clamp-2">Ajang silaturahmi dan rekreasi bersama untuk mempererat tali persaudaraan.</p>
-          </div>
-          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-purple-600">
-            <span>Pelajari Detail</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
-        </div>
-
-        <!-- KARTU 6: Donor Darah -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Donor Darah Rutin', 'Kegiatan kemanusiaan donor darah bekerja sama dengan PMI.')">
-          <div>
-            <div class="bg-red-100 text-red-600 rounded-xl p-2.5 inline-block mb-2">
-              <i class="fas fa-notes-medical text-lg"></i>
-            </div>
-            <span class="text-[10px] font-bold text-red-500 uppercase tracking-wider block mb-1">Kesehatan</span>
-            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Donor Darah Rutin</h3>
-            <p class="text-xs text-slate-500 line-clamp-2">Aksi donor darah berkala bekerjasama dengan PMI untuk membantu yang membutuhkan.</p>
-          </div>
-          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-red-600">
-            <span>Pelajari Detail</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
-        </div>
-
-        <!-- KARTU 7: Olahraga & Seni -->
-        <div class="w-[82vw] sm:w-[260px] md:w-[280px] snap-align-start bg-white rounded-2xl p-4 shadow-xl card-3d flex-shrink-0 flex flex-col justify-between cursor-pointer" onclick="openDetailModal('Pekan Olahraga & Seni', 'Kompetisi persahabatan antar divisi dalam bidang olahraga dan kesenian.')">
-          <div>
-            <div class="bg-orange-100 text-orange-600 rounded-xl p-2.5 inline-block mb-2">
-              <i class="fas fa-trophy text-lg"></i>
-            </div>
-            <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider block mb-1">PORSENI</span>
-            <h3 class="font-bold text-slate-800 text-sm sm:text-base mb-1">Pekan Olahraga</h3>
-            <p class="text-xs text-slate-500 line-clamp-2">Turnamen olahraga dan seni antar divisi untuk menjaga kebugaran dan semangat kebersamaan.</p>
-          </div>
-          <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-orange-600">
-            <span>Pelajari Detail</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
+        <div class="w-[200px] sm:w-[260px] h-[140px] sm:h-[170px] rounded-2xl overflow-hidden shadow-xl border-2 border-white/50 bg-white/20 backdrop-blur-md flex-shrink-0 cursor-pointer hover:scale-105 transition duration-300" onclick="zoomImage('foto2/sowan ke Sekda OPSI-02.webp', 'Sowan ke Sekda OPSI 02')">
+          <img src="foto2/sowan ke Sekda OPSI-02.webp" alt="Sowan ke Sekda OPSI 02" class="w-full h-full object-cover">
         </div>
 
       </div>
@@ -276,10 +172,20 @@
           <i class="fas fa-star text-[10px]"></i>
         </div>
       </div>
-
     </div>
 
   </section>
+
+  <!-- MODAL POP-UP LIGHTBOX (ZOOM FOTO & BACKDROP BLUR) -->
+  <div id="imageZoomModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center z-50 p-4 transition-all duration-300" onclick="closeZoomModal()">
+    <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+      <button onclick="closeZoomModal()" class="absolute -top-12 right-0 text-white hover:text-slate-300 text-2xl p-2 bg-white/20 rounded-full w-10 h-10 flex items-center justify-center transition">
+        <i class="fas fa-times"></i>
+      </button>
+      <img id="zoomedImage" src="" alt="Foto Kegiatan SEKAR YGI" class="max-w-full max-h-[80vh] rounded-2xl shadow-2xl border-2 border-white/30 object-contain">
+      <p id="zoomedCaption" class="text-white font-bold text-sm sm:text-base mt-3 bg-slate-900/60 px-4 py-2 rounded-xl backdrop-blur-md"></p>
+    </div>
+  </div>
 
   <!-- MODAL DINAMIS MENU (TENTANG KAMI, PENGUMUMAN, KEANGGOTAAN, GALERI) -->
   <div id="menuModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-md hidden items-center justify-center z-50 p-3 sm:p-4 overflow-y-auto">
@@ -300,9 +206,7 @@
       </div>
 
       <!-- Konten Modal Body -->
-      <div id="menuModalContent" class="p-5 sm:p-6 overflow-y-auto text-xs sm:text-sm text-slate-600 leading-relaxed space-y-4">
-        <!-- Konten diisi otomatis oleh JavaScript -->
-      </div>
+      <div id="menuModalContent" class="p-5 sm:p-6 overflow-y-auto text-xs sm:text-sm text-slate-600 leading-relaxed space-y-4"></div>
 
       <!-- Footer Modal -->
       <div class="p-4 bg-slate-50 border-t flex justify-between items-center">
@@ -465,30 +369,6 @@
     </div>
   </div>
 
-  <!-- MODAL DETAIL KEGIATAN -->
-  <div id="detailModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-50 px-4">
-    <div class="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative overflow-hidden">
-      <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl p-1 z-10 bg-white/80 rounded-full w-8 h-8 flex items-center justify-center">
-        <i class="fas fa-times"></i>
-      </button>
-      
-      <!-- Container Gambar Detail Kegiatan -->
-      <div id="modalImageContainer" class="hidden mb-4 rounded-xl overflow-hidden border border-slate-200">
-        <a id="modalImageLink" href="#" target="_blank">
-          <img id="modalImage" src="" alt="Foto Kegiatan" class="w-full h-48 object-cover hover:scale-105 transition duration-300">
-        </a>
-      </div>
-
-      <h3 id="modalTitle" class="text-lg sm:text-xl font-bold text-slate-800 mb-2"></h3>
-      <p id="modalDesc" class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed"></p>
-      <div class="flex justify-end">
-        <button onclick="closeDetailModal()" class="bg-blue-600 text-white font-medium px-4 py-2 rounded-lg text-xs hover:bg-blue-700 transition">
-          Tutup
-        </button>
-      </div>
-    </div>
-  </div>
-
   <!-- JAVASCRIPT -->
   <script>
     // Toggle Mobile Menu
@@ -508,20 +388,18 @@
       document.getElementById('kegiatan-section').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Carousel Scroll Logic
-    const container = document.getElementById('cardContainer');
-    const slideLeft = document.getElementById('slideLeft');
-    const slideRight = document.getElementById('slideRight');
+    // Zoom Image (Lightbox)
+    function zoomImage(src, caption) {
+      document.getElementById('zoomedImage').src = src;
+      document.getElementById('zoomedCaption').innerText = caption;
+      document.getElementById('imageZoomModal').classList.remove('hidden');
+      document.getElementById('imageZoomModal').classList.add('flex');
+    }
 
-    slideLeft.addEventListener('click', () => {
-      const scrollAmount = window.innerWidth < 640 ? window.innerWidth * 0.8 : 280;
-      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-
-    slideRight.addEventListener('click', () => {
-      const scrollAmount = window.innerWidth < 640 ? window.innerWidth * 0.8 : 280;
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
+    function closeZoomModal() {
+      document.getElementById('imageZoomModal').classList.add('hidden');
+      document.getElementById('imageZoomModal').classList.remove('flex');
+    }
 
     // Data Konten Menu Modal Interaktif
     const menuData = {
@@ -551,7 +429,7 @@
             <div class="border p-3.5 rounded-2xl bg-slate-50 border-slate-200">
               <div class="flex justify-between items-center mb-1">
                 <span class="bg-blue-100 text-blue-600 font-bold text-[10px] px-2 py-0.5 rounded-full">Penting</span>
-                <span class="text-[11px] text-slate-400">21 Oktober 2026</span>
+                <span class="text-[11px] text-slate-400">22 Oktober 2026</span>
               </div>
               <h4 class="font-bold text-slate-800">Pendaftaran Anggota Digital 2026 Telah Dibuka</h4>
               <p class="mt-1 text-slate-600">Seluruh karyawan kini dapat melakukan pendaftaran keanggotaan SEKAR YGI secara online melalui website ini tanpa perlu mengisi berkas manual.</p>
@@ -590,28 +468,24 @@
         content: `
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
-            <!-- Folder / Foto Rapat Kerja Tahunan -->
-            <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-slate-50">
-              <a href="https://i.ibb.co.com/rRRpT61M/pembahasan-PKB.jpg" target="_blank" class="block group relative">
-                <img src="https://ibb.co.com/ycckGyb5" alt="Folder Rapat Kerja Tahunan" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/400x250?text=Foto+Rapat+Kerja'">
-                <div class="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition"></div>
-                <span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow">
-                  <i class="fas fa-folder font-xs mr-1"></i> Rapat Kerja
-                </span>
-              </a>
-              <p class="font-bold text-slate-700 text-xs p-2.5 text-center border-t bg-white">Folder Rapat Kerja Tahunan</p>
+            <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-slate-50 cursor-pointer" onclick="zoomImage('foto2/pembahasan PKB.webp', 'Pembahasan PKB')">
+              <img src="foto2/pembahasan PKB.webp" alt="Pembahasan PKB" class="w-full h-36 object-cover hover:scale-105 transition duration-300">
+              <p class="font-bold text-slate-700 text-xs p-2.5 text-center border-t bg-white">Pembahasan PKB</p>
             </div>
 
-            <!-- Folder / Foto Workshop & Skill Up -->
-            <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-slate-50">
-              <a href="https://i.ibb.co.com/mCs1YN7c/Pelatihan-kepemimpinan-01.jpg" target="_blank" class="block group relative">
-                <img src="https://ibb.co.com/WW9qdV12" alt="Folder Workshop & Skill Up" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/400x250?text=Foto+Workshop'">
-                <div class="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition"></div>
-                <span class="absolute top-2 left-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow">
-                  <i class="fas fa-folder font-xs mr-1"></i> Workshop
-                </span>
-              </a>
-              <p class="font-bold text-slate-700 text-xs p-2.5 text-center border-t bg-white">Folder Workshop & Skill Up</p>
+            <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-slate-50 cursor-pointer" onclick="zoomImage('foto2/Pelatihan kepemimpinan-01.webp', 'Pelatihan Kepemimpinan')">
+              <img src="foto2/Pelatihan kepemimpinan-01.webp" alt="Pelatihan Kepemimpinan" class="w-full h-36 object-cover hover:scale-105 transition duration-300">
+              <p class="font-bold text-slate-700 text-xs p-2.5 text-center border-t bg-white">Pelatihan Kepemimpinan</p>
+            </div>
+
+            <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-slate-50 cursor-pointer" onclick="zoomImage('foto2/sowan ke Sekda OPSI-01.webp', 'Sowan ke Sekda OPSI 01')">
+              <img src="foto2/sowan ke Sekda OPSI-01.webp" alt="Sowan ke Sekda OPSI 01" class="w-full h-36 object-cover hover:scale-105 transition duration-300">
+              <p class="font-bold text-slate-700 text-xs p-2.5 text-center border-t bg-white">Sowan ke Sekda OPSI 01</p>
+            </div>
+
+            <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-slate-50 cursor-pointer" onclick="zoomImage('foto2/sowan ke Sekda OPSI-02.webp', 'Sowan ke Sekda OPSI 02')">
+              <img src="foto2/sowan ke Sekda OPSI-02.webp" alt="Sowan ke Sekda OPSI 02" class="w-full h-36 object-cover hover:scale-105 transition duration-300">
+              <p class="font-bold text-slate-700 text-xs p-2.5 text-center border-t bg-white">Sowan ke Sekda OPSI 02</p>
             </div>
 
           </div>
@@ -646,32 +520,6 @@
     function closeFormModal() {
       document.getElementById('formModal').classList.add('hidden');
       document.getElementById('formModal').classList.remove('flex');
-    }
-
-    // Modal Detail Kegiatan Logic (Dilengkapi paparan gambar jika tersedia)
-    function openDetailModal(title, description, imageUrl = null) {
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalDesc').innerText = description;
-      
-      const imgContainer = document.getElementById('modalImageContainer');
-      const imgElement = document.getElementById('modalImage');
-      const imgLink = document.getElementById('modalImageLink');
-
-      if (imageUrl) {
-        imgElement.src = imageUrl;
-        imgLink.href = imageUrl;
-        imgContainer.classList.remove('hidden');
-      } else {
-        imgContainer.classList.add('hidden');
-      }
-
-      document.getElementById('detailModal').classList.remove('hidden');
-      document.getElementById('detailModal').classList.add('flex');
-    }
-
-    function closeDetailModal() {
-      document.getElementById('detailModal').classList.add('hidden');
-      document.getElementById('detailModal').classList.remove('flex');
     }
   </script>
 
